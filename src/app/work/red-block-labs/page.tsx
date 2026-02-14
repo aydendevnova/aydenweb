@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowUpRightFromSquareIcon } from "lucide-react"
 import Link from "next/link"
 import Image, { type StaticImageData } from "next/image"
 import { type Metadata } from "next"
+import { FadeIn } from "@/components/FadeIn"
 import zeroAuthorityImg from "@/assets/rbl/zero-authority.jpg"
 import bnsOneImg from "@/assets/rbl/bns-one.jpg"
 import doctImg from "@/assets/rbl/doct.jpg"
@@ -43,28 +44,34 @@ export default function RedBlockLabsPage() {
   return (
     <main className="flex min-h-full flex-col bg-[var(--color-bg)]">
       <section className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 pt-[80px] pb-[60px] md:gap-10 md:px-12 md:pt-[100px] md:pb-[80px] lg:gap-12 lg:px-[200px] lg:pt-[120px] lg:pb-[100px]">
-        <Link
-          href="/"
-          className="font-body flex w-fit items-center gap-2 text-[16px] font-medium text-[var(--color-link)] hover:underline"
-        >
-          <ArrowLeft size={16} /> Back
-        </Link>
+        <FadeIn mobileEnabled>
+          <Link
+            href="/"
+            className="font-body flex w-fit items-center gap-2 text-[16px] font-medium text-[var(--color-link)] hover:underline"
+          >
+            <ArrowLeft size={16} /> Back
+          </Link>
+        </FadeIn>
 
-        <div className="flex flex-col gap-6">
-          <h1 className="font-heading text-[28px] font-semibold leading-tight text-[var(--color-text)] md:text-[34px] lg:text-[40px]">
-            Red Block Labs
-          </h1>
-          <p className="font-body max-w-[800px] text-[16px] leading-[1.6] text-[var(--color-text)]">
-            Red Block Labs is a development and design team led by Rocky Nguyen, specializing in frontend
-            and design for our clients. Our team members also include Christa Vu (Designer), Tien Tran and John Ha. I contributed as the sole-developer on
-            multiple client projects from 2023–2026, helping secure over
-            $20,000 in grants and funding through shipped work.
-          </p>
-        </div>
+        <FadeIn mobileEnabled>
+          <div className="flex flex-col gap-6">
+            <h1 className="font-heading text-[28px] font-semibold leading-tight text-[var(--color-text)] md:text-[34px] lg:text-[40px]">
+              Red Block Labs
+            </h1>
+            <p className="font-body max-w-[800px] text-[16px] leading-[1.6] text-[var(--color-text)]">
+              Red Block Labs is a development and design team led by Rocky Nguyen, specializing in frontend
+              and design for our clients. Our team members also include Christa Vu (Designer), Tien Tran and John Ha. I contributed as the sole-developer on
+              multiple client projects from 2023–2026, helping secure over
+              $20,000 in grants and funding through shipped work.
+            </p>
+          </div>
+        </FadeIn>
 
         <div className="flex flex-col gap-8">
           {PROJECTS.map((project) => (
-            <ProjectCard key={project.title} {...project} />
+            <FadeIn key={project.title} mobileEnabled>
+              <ProjectCard {...project} />
+            </FadeIn>
           ))}
         </div>
       </section>
