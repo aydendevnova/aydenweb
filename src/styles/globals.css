@@ -8,6 +8,10 @@
   --color-muted: #6B6358;
 }
 
+.html {
+  scroll-behavior: smooth;
+}
+
 @layer base {
   html, body {
     height: 100%;
