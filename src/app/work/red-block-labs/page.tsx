@@ -33,7 +33,7 @@ const PROJECTS = [
     description:
       "Complete frontend redesign for decentralized freelance platform. Built 25+ pages including project creation flows, escrow management, wallet integration, and analytics dashboards for the V2 launch.",
     href: "https://zeroauthoritydao.com/",
-    linkLabel: "Live Site",
+    linkLabel: "zeroauthoritydao.com",
     image: zeroAuthorityImg,
   },
   {

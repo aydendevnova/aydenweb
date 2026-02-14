@@ -81,7 +81,7 @@ export default function HomePage() {
               title="PixelNova"
               description="Pixel art generation platform with custom WebAssembly processing module running on Fly.io. Built with Supabase and Stripe for payment processing. Launched in collaboration with Pixel Palette Nation and acquired over 600 users."
               href="https://pixelnova.app"
-              linkLabel="View Live App"
+              linkLabel="pixelnova.app"
               isExternalLink={true}
             />
           </FadeIn>
@@ -99,7 +99,7 @@ export default function HomePage() {
               title="Elysium Health"
               description="Engineering internship building a React Native mobile app prototype and AI product assistant. Implemented health safeguards to avoid medical claims, integrated knowledge retrieval, and built tool-calling functionality for supplement recommendations."
               href="https://www.elysiumhealth.com/"
-              linkLabel="View Company Site"
+              linkLabel="elysiumhealth.com"
               isExternalLink={true}
             />
           </FadeIn>
@@ -150,9 +150,9 @@ export default function HomePage() {
             Background
           </h2>
           <p className="font-body max-w-[800px] text-[16px] leading-[1.6] text-[var(--color-text)]">
-            I started building games in high school, shipping <Link className="text-[var(--color-link)] hover:underline" href="https://store.steampowered.com/app/1896630/Everplast/" target="_blank" rel="noopener noreferrer" >Everplast </Link> to Steam before graduation.
+            I started building games in high school, shipping <Link className="text-[var(--color-link)] hover:underline inline-flex items-center gap-1" href="https://store.steampowered.com/app/1896630/Everplast/" target="_blank" rel="noopener noreferrer" >Everplast <ArrowUpRightFromSquareIcon size={12} /></Link> to Steam before graduation.
             <br /><br/>I transitioned to web development before starting college, working with startups and
-            DAOs on products that secured grant funding. I recently completed an engineering internship at Elysium Health, building a mobile app prototype and AI-powered product assistant with a focus on safety and regulatory alignment. <br/><br/>After, I won an <Link className="text-[var(--color-link)] hover:underline" href="https://dorahacks.io/buidl/34660" target="_blank" rel="noopener noreferrer" >embedded wallet hackathon</Link>, later working on a @turnkey/stacks SDK with Stacks Labs and Turnkey. I am currently a third-year computer science student at the University of North Florida, graduating Spring 2027.
+            DAOs on products that secured grant funding. I recently completed an engineering internship at Elysium Health, building a mobile app prototype and AI-powered product assistant with a focus on safety and regulatory alignment. <br/><br/>After, I won an <Link className="text-[var(--color-link)] hover:underline inline-flex items-center gap-1" href="https://dorahacks.io/hackathon/embedded-wallet/winner" target="_blank" rel="noopener noreferrer" >embedded wallet hackathon <ArrowUpRightFromSquareIcon size={12} /></Link>, later working on a @turnkey/stacks SDK with Stacks Labs and Turnkey. I am currently a third-year computer science student at the University of North Florida, graduating Spring 2027.
           </p>
         </section>
       </FadeIn>
