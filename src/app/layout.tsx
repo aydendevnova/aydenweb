@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import { type Metadata } from "next";
 import { Crimson_Text, Inter } from "next/font/google";
 import { ContactFooter } from "@/components/ContactFooter";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aydenweb.com"),
@@ -60,6 +61,7 @@ export default function RootLayout({
       <body className="h-full bg-[var(--color-bg)]">
         {children}
         <ContactFooter />
+        <Analytics />
       </body>
     </html>
   );
