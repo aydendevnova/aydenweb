@@ -8,9 +8,23 @@ import bnsOneImg from "@/assets/rbl/bns-one.jpg"
 import doctImg from "@/assets/rbl/doct.jpg"
 
 export const metadata: Metadata = {
-  title: "Red Block Labs — Ayden Springer",
+  title: "Red Block Labs - Ayden Springer",
   description:
-    "Frontend development work across multiple Stacks ecosystem projects with Red Block Labs.",
+    "Frontend development across multiple Stacks ecosystem projects. Built interfaces for Bitcoin naming systems, decentralized freelance platforms, and art collections. Work contributed to securing over $20,000 in grants.",
+  alternates: {
+    canonical: "https://aydenweb.com/work/red-block-labs",
+  },
+  openGraph: {
+    title: "Red Block Labs — Ayden Springer",
+    description:
+      "Frontend development across multiple Stacks ecosystem projects. Built interfaces for Bitcoin naming systems, decentralized freelance platforms, and art collections.",
+    url: "https://aydenweb.com/work/red-block-labs",
+  },
+  twitter: {
+    title: "Red Block Labs — Ayden Springer",
+    description:
+      "Frontend development across multiple Stacks ecosystem projects. Built interfaces for Bitcoin naming systems, decentralized freelance platforms, and art collections.",
+  },
 }
 
 const PROJECTS = [

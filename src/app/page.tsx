@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { ProgressNavigation } from "@/components/ProgressNavigation"
 import { FadeIn } from "@/components/FadeIn"
 import { ArrowDown, ArrowRight, ArrowUpRightFromSquareIcon } from "lucide-react";
@@ -7,6 +8,26 @@ import rockyImg from "@/assets/rocky.webp";
 import michaelImg from "@/assets/michael.webp";
 import manishImg from "@/assets/manish.webp";
 import type { ReactNode } from "react";
+
+export const metadata: Metadata = {
+  title: "Ayden Springer — Developer",
+  description:
+    "Computer science student at UNF graduating Spring 2027. Built an AI product assistant at Elysium Health, a pixel art platform with Stripe, and won the Stacks embedded wallet hackathon. Available for full-time roles or contract work.",
+  alternates: {
+    canonical: "https://aydenweb.com",
+  },
+  openGraph: {
+    title: "Ayden Springer — Developer",
+    description:
+      "Computer science student at UNF graduating Spring 2027. Built an AI product assistant at Elysium Health, a pixel art platform with Stripe, and won the Stacks embedded wallet hackathon.",
+    url: "https://aydenweb.com",
+  },
+  twitter: {
+    title: "Ayden Springer — Developer",
+    description:
+      "Computer science student at UNF graduating Spring 2027. Built an AI product assistant at Elysium Health, a pixel art platform with Stripe, and won the Stacks embedded wallet hackathon.",
+  },
+}
 
 const NAV_SECTIONS = [
   { id: "work", label: "Work" },
@@ -25,8 +46,8 @@ export default function HomePage() {
           <h1 className="font-heading text-[36px] font-semibold leading-tight tracking-[-1px] text-[var(--color-text)] md:text-[48px] lg:text-[60px]">
             Ayden Springer.
           </h1>
-          <p className="font-body max-w-[550px] text-base leading-[1.5] font-normal text-[var(--color-text)] md:text-lg">
-          Computer Science student at UNF, graduating Spring 2027. <br/><br/>Developed an AI product assistant at Elysium Health, built a pixel art generation platform with Stripe, and won the Stacks embedded wallet hackathon. Available for full-time roles starting Summer 2027 or contract work
+          <p className="font-body max-w-3xl text-base leading-[1.5] font-normal text-[var(--color-text)] md:text-lg">
+          Computer Science student at UNF, graduating Spring 2027. <br/><br/>Developed an AI product assistant at Elysium Health, built a pixel art generation platform with Stripe, and won the Stacks embedded wallet hackathon. Available for full-time roles starting Summer 2027 or contract work.
           </p>
           <div className="flex flex-wrap items-center gap-4 md:gap-8">
             <Link
