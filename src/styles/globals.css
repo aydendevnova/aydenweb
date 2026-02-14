@@ -1,6 +1,23 @@
 @import "tailwindcss";
 
-@theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+:root {
+  --color-bg: #F7F3EF;
+  --color-text: #2C2416;
+  --color-link: #C1502E;
+  --color-border: #D4CEC6;
+  --color-muted: #6B6358;
+}
+
+@layer base {
+  html, body {
+    height: 100%;
+  }
+
+  .font-heading {
+    font-family: var(--font-crimson-text), "Crimson Text", serif;
+  }
+
+  .font-body {
+    font-family: var(--font-inter), "Inter", sans-serif;
+  }
 }
