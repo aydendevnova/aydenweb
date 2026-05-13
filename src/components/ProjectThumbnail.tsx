@@ -6,15 +6,16 @@ interface ProjectThumbnailProps {
   slug: string
   color: string
   thumbnail: string
+  description?: string
 }
 
-export function ProjectThumbnail({ title, slug, color, thumbnail }: ProjectThumbnailProps) {
+export function ProjectThumbnail({ title, slug, color, thumbnail, description }: ProjectThumbnailProps) {
   const hasImage = thumbnail && !thumbnail.includes("placeholder")
 
   return (
-    <Link href={`/work/${slug}`} className="group block">
+    <Link href={`/work/${slug}`} className="group flex flex-col items-center gap-3 text-center sm:flex-row sm:items-center sm:gap-4 sm:text-left lg:block">
       <div
-        className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl transition-transform duration-300 group-hover:scale-[1.02]"
+        className="relative flex aspect-[4/3] w-full max-w-[240px] shrink-0 items-center justify-center overflow-hidden rounded-xl transition-transform duration-300 group-hover:scale-[1.02] sm:w-[180px] sm:max-w-none lg:w-full"
         style={{ backgroundColor: color }}
       >
         {hasImage ? (
@@ -23,7 +24,7 @@ export function ProjectThumbnail({ title, slug, color, thumbnail }: ProjectThumb
             alt={title}
             fill
             className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            sizes="(max-width: 1024px) 180px, 33vw"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center border-2 border-dashed border-white/20 p-6">
@@ -33,9 +34,16 @@ export function ProjectThumbnail({ title, slug, color, thumbnail }: ProjectThumb
           </div>
         )}
       </div>
-      <h3 className="font-heading mt-3 text-[18px] font-semibold text-[var(--color-text)] md:text-[20px]">
-        {title}
-      </h3>
+      <div>
+        <h3 className="font-heading text-[18px] font-semibold text-[var(--color-text)] md:text-[20px] lg:mt-3">
+          {title}
+        </h3>
+        {description && (
+          <p className="font-body mt-1 text-[14px] leading-[1.5] text-[var(--color-muted)] lg:hidden max-w-md">
+            {description}
+          </p>
+        )}
+      </div>
     </Link>
   )
 }
