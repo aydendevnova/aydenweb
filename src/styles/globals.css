@@ -25,3 +25,22 @@
     font-family: var(--font-inter), "Inter", sans-serif;
   }
 }
+
+.highlight-mark {
+  background-image: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--highlight-color, #ffd000) 50%, transparent) 0%,
+    color-mix(in srgb, var(--highlight-color, #ffd500) 50%, transparent) 100%
+  );
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 85%;
+  padding: 0.2em 0.15em;
+  margin: -0.05em -0.15em;
+  border-radius: 0.15em;
+  transition: background-size 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.highlight-mark.is-highlighted {
+  background-size: 100% 85%;
+}

@@ -1,6 +1,16 @@
 import type { MetadataRoute } from "next"
+import { getProjectSlugs } from "@/lib/mdx"
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const projectSlugs = getProjectSlugs()
+
+  const projectEntries: MetadataRoute.Sitemap = projectSlugs.map((slug) => ({
+    url: `https://aydenweb.com/work/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }))
+
   return [
     {
       url: "https://aydenweb.com",
@@ -9,10 +19,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: "https://aydenweb.com/work/red-block-labs",
+      url: "https://aydenweb.com/work",
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.9,
     },
+    ...projectEntries,
   ]
 }

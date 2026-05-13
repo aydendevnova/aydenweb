@@ -1,0 +1,58 @@
+---
+title: "PixelNova"
+subtitle: "A pixel art generation platform with 600+ users"
+slug: "pixelnova"
+color: "#E8652B"
+thumbnail: "placeholder:PixelNova — pixel art generation interface"
+role: "Solo Developer"
+timeline: "2024"
+team:
+  - "Ayden Springer"
+tools:
+  - "Next.js"
+  - "TypeScript"
+  - "Supabase"
+  - "Stripe"
+  - "WebAssembly"
+  - "Fly.io"
+order: 4
+featured: true
+category: "featured"
+---
+
+## Overview
+
+PixelNova is a pixel art generation platform I built and launched independently. Users upload images and the platform converts them into pixel art using <Highlight>a custom WebAssembly processing module that runs on Fly.io edge infrastructure</Highlight>. The app handles user accounts through Supabase, processes payments through Stripe, and was launched in collaboration with Pixel Palette Nation, acquiring over 600 users.
+
+<ProjectImage src="placeholder:PixelNova — main interface showing image upload and pixel art output" alt="PixelNova main interface" />
+
+---
+
+## The Technical Problem
+
+Image-to-pixel-art conversion at quality requires more than downscaling and nearest-neighbor interpolation. The processing module needed to handle color palette reduction, dithering options, grid sizing, and output at resolutions that work for both screen display and print. Running this in the browser was too slow for larger images, so I built the processing pipeline as a WebAssembly module deployed to Fly.io's edge network — keeping processing fast regardless of the user's device.
+
+<ProjectImage src="placeholder:PixelNova — before/after comparison of image conversion" alt="Pixel art conversion comparison" />
+
+---
+
+## Payments and User Management
+
+The platform runs on a credit-based system through Stripe. Users purchase credits, each conversion costs credits based on output resolution, and the transaction history lives in Supabase alongside their generated art gallery. The Stripe integration handles one-time purchases, webhook-driven credit allocation, and receipt generation.
+
+<ImageGrid columns={2}>
+  <ProjectImage src="placeholder:PixelNova — user dashboard with generation history" alt="User dashboard" />
+  <ProjectImage src="placeholder:PixelNova — pricing/credits purchase flow" alt="Credits purchase" />
+</ImageGrid>
+
+---
+
+## Launch
+
+PixelNova launched through a partnership with Pixel Palette Nation, a community of pixel art enthusiasts. The collaboration provided an initial user base and feedback loop that shaped the product's feature priorities — batch processing, palette customization, and export formats were all driven by community requests.
+
+<ProjectImage src="placeholder:PixelNova — gallery of generated pixel art examples" alt="Generated pixel art gallery" />
+
+<Highlight>The platform acquired over 600 users</Highlight> and processed thousands of conversions. It remains live at [pixelnova.app](https://pixelnova.app).
+
+[Visit PixelNova](https://pixelnova.app)

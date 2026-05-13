@@ -1,0 +1,122 @@
+---
+title: "Winning the Stacks Embedded Wallet Hackathon"
+subtitle: "From hackathon to SDK contributor to ecosystem builder"
+slug: "stacks-hackathon"
+color: "#5546FF"
+thumbnail: "/projects/stacks-turnkey-hackathon/btcu-homepage.png"
+thumbnailSecondary: "/projects/stacks-turnkey-hackathon/btcu-dashboard.png"
+splitHero: false
+role: "Engineer & SDK Lead"
+timeline: "2025 – 2026"
+team:
+  - "Ayden Springer"
+  - "Fred Martinez"
+  - "Michael Jagdeo"
+collaborators: "Stacks Labs, Turnkey"
+tools:
+  - "React"
+  - "Next.js"
+  - "TypeScript"
+  - "Stacks.js"
+  - "Turnkey SDK"
+  - "Clarity"
+  - "Cursor"
+  - "Claude Code"
+order: 1
+featured: true
+category: "featured"
+---
+
+## Overview
+
+Bitcoin University (BTCU) is an education protocol built on Stacks that turns learning into an economic feedback loop. Students pay for courses with sBTC, earn NFT certificates on completion, and educators receive automated payouts. The whole thing runs on-chain, and the onboarding is a single passkey tap powered by Turnkey's embedded wallet infrastructure. <Highlight>We built it for the DoraHacks Embedded Wallet hackathon, and it led to a funded SDK grant from Stacks Labs, a trip to Buenos Aires, and a presentation at Bitcoin Builders.</Highlight>
+
+I worked on BTCU with [Fred Martinez](https://x.com/fred_dog93) and [Michael Jagdeo](https://x.com/attractfund1ng). We built it using AI-assisted coding tools (Cursor and Claude Code), and the entire team operated remotely during the hackathon. My handle is [@aydendevnova](https://x.com/aydendevnova).
+
+<ProjectImage src="/projects/stacks-turnkey-hackathon/btcu-homepage.png" alt="Bitcoin University landing page showing 'Learn Bitcoin with Rewards' headline with Stacks and sBTC branding" caption="The BTCU landing page. Courses, rewards, and on-chain credentials." />
+
+---
+
+## The Problem
+
+Stacks apps at the time required users to manage their own wallet keys. If you wanted to interact with a Bitcoin L2 application, you needed to install a browser extension, write down a seed phrase, and understand enough about self-custody to not lose your funds. For an education platform trying to onboard people who are new to Bitcoin, that is the exact opposite of what you want.
+
+The DoraHacks Embedded Wallet hackathon posed a clear question: how can embedded wallets make Bitcoin-native experiences frictionless on Stacks? Our team's answer was to make the crypto invisible. The user signs up with a passkey (Face ID or fingerprint), gets a wallet created behind the scenes by Turnkey, and never touches a seed phrase. The motto on our planning board was simple: "Make it so easy your mom could do it."
+
+<ProjectImage src="/projects/stacks-turnkey-hackathon/technical-development-process-miro.jpg" alt="Miro board showing the technical development process for BTCU, including problem definition, convenience-first philosophy, and phased build approach" caption="Our Miro board. Problem definition, development phases, and the testing interface side by side." />
+
+---
+
+## What We Built
+
+### Passkey Onboarding
+
+The signup flow is one button. You tap "Join Now," authenticate with your device's biometric (Face ID, fingerprint, or security key), and Turnkey creates a wallet in a sub-organization scoped to your account. No seed phrase, no browser extension, no twelve words written on a napkin. The wallet is yours, Turnkey manages the key infrastructure, and you interact with Stacks without ever knowing what a private key is.
+
+<ProjectImage src="/projects/stacks-turnkey-hackathon/btcu-logging-in-with-turnkey.png" alt="BTCU passkey creation modal showing 'Creating account with passkey...' powered by Turnkey" caption="Account creation. One passkey tap and the wallet exists." />
+
+### Dashboard and Wallet
+
+Once signed in, the dashboard shows your STX and sBTC balances, a whitelist gate (you need at least $10 worth of sBTC to enroll in courses), and the available course catalog. The "Manage" button opens your full wallet details. All of this reads from on-chain state, and the balance display updates in real time.
+
+<ProjectImage src="/projects/stacks-turnkey-hackathon/btcu-dashboard.png" alt="BTCU dashboard showing total balance of $95,250, STX and sBTC holdings, whitelist section, and available courses" caption="The student dashboard. Wallet balance, whitelist status, and course catalog." />
+
+### Courses On-Chain
+
+Each course costs sBTC. You pay once, and the transaction happens on Stacks through Turnkey's signing infrastructure. The course view shows lessons, progress tracking, and metadata like duration and difficulty level. When a student completes all lessons, the course owner can grant an NFT certificate of completion, which lives permanently in the student's wallet as a verifiable credential.
+
+<ProjectImage src="/projects/stacks-turnkey-hackathon/btcu-course-view.png" alt="BTCU course detail showing 'Start with Bitcoin' course with 6 lessons, progress bar, and 0.01 sBTC price" caption="Course view. Six lessons, 0.01 sBTC, and an NFT certificate on completion." />
+
+The economic loop is the interesting part. Students pay educators in sBTC, educators build reputation through on-chain completion rates, and the system self-governs because every transaction is transparent. There is no intermediary taking a cut or deciding who gets paid.
+
+---
+
+## Buenos Aires
+
+The hackathon submission caught the attention of the Stacks Labs team. They invited us to the Stacks Hacker House in Buenos Aires for the Bitcoin Builders conference on November 19, 2025. Fred and Michael presented BTCU during the hackathon demos session alongside other Stacks builders.
+
+<ProjectImage src="/projects/stacks-turnkey-hackathon/luma-buenos-aires-cover.jpg" alt="Bitcoin Builders Buenos Aires event cover showing the conference logo and November 19, 2025 date" caption="Bitcoin Builders: Buenos Aires. November 19, 2025." />
+
+That week was the first time the team met in person. We spent the days at the hacker house, watched other teams demo their projects, and had conversations with the Stacks Labs developer relations team about what came next for BTCU and the broader embedded wallet tooling on Stacks.
+
+<ProjectImage src="/projects/stacks-turnkey-hackathon/stacks-hackerhouse-team.jpg" alt="Group photo of all builders at the Stacks Hacker House in Buenos Aires" caption="The Stacks Hacker House crew in Buenos Aires." />
+
+---
+
+## From Hackathon to SDK Grant
+
+The hackathon exposed a real gap in the developer tooling. There was no clean TypeScript SDK for building Stacks applications with Turnkey's embedded wallet infrastructure. The BTCU frontend had to wire together Stacks.js and Turnkey's APIs manually, and any other developer trying to build a similar app would hit the same friction.
+
+After Buenos Aires, Eric Choy from Stacks Labs reached out with a grant proposal to integrate Stacks natively into Turnkey's SDK ecosystem. <Highlight>I led the grant negotiation and the technical work.</Highlight>
+
+The initial proposal was straightforward, but I pushed back on the scope and expectations before signing. I asked how polished the SDK needed to be, whether it should match the quality bar of existing Turnkey modules (Solana, Ethers, CosmJS), who would maintain it if upstream APIs changed, and how the grants committee would judge success six months after launch. These were not casual questions. I wanted to understand exactly what "out-of-the-box Stacks support" meant before committing to deliver it.
+
+<CalloutQuote>"We are approaching this as a serious, long-term piece of infrastructure rather than a one-off hackathon wrapper, so I want to be very transparent about what is realistic at different levels of depth."</CalloutQuote>
+
+Stacks Labs agreed to scope it as a beta: functional signing, basic error handling, example apps for both custodial and non-custodial architectures, and documentation. We settled on $3,000 across two installments with four phased deliverables. I signed the contract in late December 2025 and started building in January 2026.
+
+### The SDK
+
+The `@turnkey/stacks` package follows the same patterns as existing Turnkey SDK modules. It exports a `TurnkeySigner` class that accepts any Turnkey client (server or browser), derives Stacks addresses from Turnkey-managed secp256k1 keys, and signs STX transfers by computing the transaction's `sigHashPreSign`, sending it to Turnkey with `HASH_FUNCTION_NO_OP` (so Turnkey signs the raw bytes without double-hashing), and assembling the 65-byte VRS signature.
+
+The hardest part was understanding the signing flow. Stacks transactions require signing a pre-computed hash, but Turnkey's default behavior applies SHA-256 before signing. If you do not override that behavior with the NO_OP flag, every signature comes back invalid and the error message tells you nothing useful. I spent a full day tracing through the Stacks.js source code to understand exactly which bytes needed to be signed and in what order before the first transaction went through on testnet.
+
+I also built two example applications: a custodial server (Node.js CLI) where the server owns the wallet and signs with API keys, and a non-custodial client (Next.js) where each user owns their wallet in a Turnkey sub-organization and signs from the browser. Both demonstrate the complete flow from wallet creation to broadcast.
+
+<ProjectImage src="placeholder:Code screenshot showing the TurnkeySigner class and signHash method from @turnkey/stacks" alt="TurnkeySigner SDK code" caption="The TurnkeySigner class. Address derivation, transaction signing, and broadcast in one interface." />
+
+I completed all Phase 1 deliverables on February 27, 2026. The SDK compiles, signs, broadcasts, and confirms transactions on Stacks testnet. Final placement in Turnkey's official GitHub organization is pending coordination with their team.
+
+<ProjectImage src="placeholder:GitHub repository showing the @turnkey/stacks SDK README with installation instructions and API reference" alt="@turnkey/stacks GitHub repository" caption="The SDK repository. Installation, API reference, and signing architecture." />
+
+---
+
+## What I Learned
+
+This project taught me how to navigate the space between building something and building something that matters to an ecosystem. The hackathon was a sprint, but everything after it (the grant negotiation, the SDK architecture, the back-and-forth emails about scope and expectations) was the real work. Writing code is the easy part. Defining what code to write, who it serves, and how to set expectations honestly with a funding partner is harder and more valuable.
+
+I also learned that asking difficult questions early saves everyone time. My emails to Eric about test coverage, maintenance plans, and success criteria could have been seen as overcautious, but they resulted in a contract that both sides understood. Nobody was surprised by the deliverables because we had already agreed on what "done" looked like before I wrote a single line.
+
+On the technical side, the signing integration taught me more about elliptic curve cryptography and transaction serialization than any tutorial could. When you have to trace through three different SDKs (Stacks.js, Turnkey, and your own) to figure out why a signature is invalid, you come out the other side with a genuine understanding of how the pieces fit together.
+
+[View BTCU on DoraHacks](https://dorahacks.io/hackathon/embedded-wallet/buidl) | [SDK Repository](https://github.com/aydendevnova/turnkey-stacksjs-sdk) | [Examples Repository](https://github.com/aydendevnova/turnkey-stacksjs-examples)

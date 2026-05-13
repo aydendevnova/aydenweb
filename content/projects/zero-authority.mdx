@@ -1,0 +1,81 @@
+---
+title: "Zero Authority"
+subtitle: "Frontend for a decentralized freelance platform on Bitcoin"
+slug: "zero-authority"
+color: "#1A3A4A"
+thumbnail: "placeholder:Zero Authority app dashboard"
+role: "Sole Developer"
+timeline: "2023 – 2025"
+team:
+  - "Ayden Springer"
+  - "Rocky Nguyen"
+  - "Christa Vu"
+  - "Tien Tran"
+  - "John Ha"
+collaborators: "Built through Red Block Labs"
+tools:
+  - "React"
+  - "TypeScript"
+  - "Stacks.js"
+  - "Tailwind CSS"
+order: 2
+featured: true
+category: "featured"
+---
+
+## Overview
+
+Zero Authority is a decentralized freelance platform built on the Stacks blockchain. It enables freelancers and clients to create, negotiate, and complete projects with <Highlight>smart contract escrow — no middleman taking a cut</Highlight>, no payment disputes resolved by a platform's support team. The escrow releases funds when both parties confirm completion, and the entire transaction history lives on-chain.
+
+I was the sole developer on the V2 frontend redesign, working within Red Block Labs — a development team led by Rocky Nguyen, with design from Christa Vu.
+
+<ProjectImage src="placeholder:Zero Authority — full dashboard view showing active projects" alt="Zero Authority dashboard" />
+
+---
+
+## The Problem
+
+The V1 frontend had the functionality but not the experience. Freelancers needed to understand wallet connections, escrow mechanics, and on-chain transactions just to post a project. The interface assumed familiarity with Web3 concepts that most freelancers don't have.
+
+<Highlight>The core challenge was making decentralized escrow feel as natural as Upwork's payment flow</Highlight> — without hiding the blockchain mechanics that make the platform trustworthy in the first place.
+
+---
+
+## What I Built
+
+<Highlight>The V2 redesign covered 25+ pages</Highlight> across the entire platform. The key flows:
+
+### Project Creation
+
+A multi-step project creation flow that guides clients through scoping, budget setting, and milestone definition. Each milestone maps to an on-chain escrow contract, but the interface presents it as a simple progress tracker.
+
+<ProjectImage src="placeholder:Zero Authority — project creation flow (multi-step form)" alt="Project creation flow" />
+
+### Escrow Management
+
+The escrow dashboard shows the state of all funds — locked, in dispute, released — with clear actions at each stage. Status updates map directly to smart contract states, but the language is "Payment released" rather than "Contract executed."
+
+<ImageGrid columns={2}>
+  <ProjectImage src="placeholder:Escrow — funds locked state" alt="Escrow locked state" />
+  <ProjectImage src="placeholder:Escrow — payment released confirmation" alt="Payment released" />
+</ImageGrid>
+
+### Wallet Integration
+
+Wallet connection and transaction signing needed to feel like logging in and clicking "Pay." I built the authentication layer to handle multiple Stacks wallets, persist sessions, and present signing requests with human-readable summaries of what the transaction does.
+
+<ProjectImage src="placeholder:Zero Authority — wallet connection and transaction signing" alt="Wallet integration" />
+
+### Analytics Dashboard
+
+Project analytics for both freelancers and clients — earnings over time, project completion rates, payment history. All data pulled from on-chain transactions and rendered into standard dashboard patterns.
+
+<ProjectImage src="placeholder:Zero Authority — analytics dashboard with charts" alt="Analytics dashboard" />
+
+---
+
+## Results
+
+The work contributed to Zero Authority <Highlight>securing grant funding from the Stacks Foundation</Highlight>. The V2 frontend is live at [zeroauthoritydao.com](https://zeroauthoritydao.com/).
+
+[Visit Zero Authority](https://zeroauthoritydao.com/)

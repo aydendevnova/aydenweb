@@ -3,6 +3,8 @@ import "@/styles/globals.css";
 import { type Metadata } from "next";
 import { Crimson_Text, Inter } from "next/font/google";
 import { ContactFooter } from "@/components/ContactFooter";
+import { SiteNav } from "@/components/SiteNav";
+import { AudioProvider } from "@/components/AudioContext";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
@@ -59,8 +61,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${crimsonText.variable} ${inter.variable} h-full`}>
       <body className="h-full bg-[var(--color-bg)]">
-        {children}
-        <ContactFooter />
+        <AudioProvider>
+          <SiteNav />
+          {children}
+          <ContactFooter />
+        </AudioProvider>
         <Analytics />
       </body>
     </html>

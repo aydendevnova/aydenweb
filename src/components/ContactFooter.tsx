@@ -1,12 +1,9 @@
-"use client"
 import { ArrowUpRightFromSquareIcon } from "lucide-react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 
 export function ContactFooter() {
-  const pathname = usePathname();
   return (  
-    <footer id="contact" className={`flex w-full flex-col gap-6 px-6 pt-[50px] pb-[160px] mx-auto md:gap-8 md:px-12 md:pt-[60px] md:pb-[240px] lg:px-[200px] lg:pt-[80px] lg:pb-[340px] ${pathname === "/work/red-block-labs" ? "max-w-7xl" : ""}`}>  
+    <footer id="contact" className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-6 pt-[50px] pb-[160px] md:gap-8 md:px-12 md:pt-[60px] md:pb-[240px] lg:px-20 lg:pt-[80px] lg:pb-[340px]">  
       <h2 className="font-heading text-[28px] font-semibold text-[var(--color-text)] md:text-[34px] lg:text-[40px]">
         Contact
       </h2>

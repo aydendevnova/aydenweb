@@ -1,0 +1,146 @@
+---
+title: "Everplast"
+subtitle: "What happens when you ship a game at 16 years old?"
+slug: "everplast"
+color: "#1C1C2E"
+thumbnail: "/projects/everplast/world1.png"
+thumbnailSecondary: "/projects/everplast/world1_cave.png"
+role: "Solo Developer"
+timeline: "2021 – 2022"
+team:
+  - "Ayden Springer"
+tools:
+  - "GDScript"
+  - "Godot Engine"
+  - "Steamworks"
+order: 10
+featured: false
+category: "game-development"
+---
+
+## Overview
+
+Everplast is a 2D pixel-art platformer I built solo in Godot 3 and <Highlight>shipped to Steam when I was 16</Highlight>. I wrote every system in the game over about eight months: the player state machine, the rank-based progression, five ranged weapons, a full tabbed inventory, three boss fights with custom AI, controller support, English and Spanish localization, and a five-slot save system that persists to JSON. I also handled the entire Steam publishing pipeline, from store page copywriting to build packaging to the Steamworks review process.
+
+<ProjectVideo src="placeholder:Gameplay reel — 30-60s montage of running, jumping, combat, and world transitions across all four worlds" alt="Everplast gameplay montage" caption="Gameplay across all four worlds." />
+
+<ProjectImage src="/projects/everplast/world1.png" alt="Everplast gameplay — Foggy Overlands world with the player character navigating platforms over water" caption="Foggy Overlands, the first world. Waterfalls, patrolling enemies, and gem collectibles." />
+
+---
+
+## How It Started
+
+Before Everplast there was a game called Fields of Elysium. I built it while first learning pixel art and Godot, and finishing it was genuinely a big deal for me because I had four or five abandoned projects sitting on my hard drive before that. It proved I could actually complete something. It was also, honestly, really boring to play.
+
+<ProjectImage src="/projects/everplast/fields_of_elysium.png" alt="Fields of Elysium gameplay" caption="Fields of Elysium. Functional, but boring." />
+
+I did not touch game development for ten months after that. Then one day at school I randomly decided to download the old project, and playing it gave me this massive wave of nostalgia. Something clicked that I still cannot fully explain. I pulled up Trello, started writing down world ideas and mechanics, and within a few days I was deep into the engine again, working every night. I went from doing absolutely nothing for almost a year to being unable to stop.
+
+<CalloutQuote>"I have no idea how after 10 months of doing nothing I was all of a sudden able to open up the game engine and just start going at it."</CalloutQuote>
+
+The first thing I did was tear out the old UI and redesign everything: new menus, new background art, new layout. Once that felt right, the rest started flowing. I was checking off features on my Trello board faster than I expected, recording dev vlogs about the process, and sharing early builds with playtesters on Discord. For a while the momentum was incredible, and I was genuinely excited about what this game was becoming.
+
+<ProjectImage src="/projects/everplast/everplast_trello.png" alt="Trello planning board for Everplast" caption="The Trello board where I tracked every feature, world, and bug." />
+
+---
+
+## The Game
+
+### Movement and Worlds
+
+I built the player character as a KinematicBody2D driven by a finite state machine with states for idle, walk, sprint, jump, fall, dash, wall slide, wall jump, and water movement. Getting the movement to feel right took a lot of iteration. The game renders pixel art on an 8x8 grid at 1600x900, and I filled the levels with drop-through platforms, spike hazards that deal variable damage, ice tiles that change your friction and acceleration, water zones with their own distinct physics, wind modifiers, and a checkpoint system.
+
+<ProjectVideo src="placeholder:Screen recording — running through a level showing wall jumps, dashes, sprint, water movement, and checkpoint activation" alt="Movement mechanics demonstration" caption="The movement system in action. Wall jumps, dashes, water physics, and checkpoints." />
+
+<ProjectImage src="/projects/everplast/player.png" alt="Player character sprite sheet and states" caption="The player character." />
+
+I designed four worlds, each with its own tileset, music track, and environmental mechanics. Foggy Overlands is the introductory world with open layouts and basic enemies. Drowsy Lands introduces tighter platforming and new enemy types in a warm desert setting. Snow Fall adds ice physics and the adrenaline resource. The End is the single-level finale with the last boss encounter. I also built subsections within levels where the player teleports into interior areas (like the cave below) with completely different lighting through CanvasModulate, so a single level could have multiple distinct environments.
+
+<ImageGrid columns={2}>
+  <ProjectImage src="/projects/everplast/world2.png" alt="Drowsy Lands world with warm desert tones and enemies" caption="World 2: Drowsy Lands." />
+  <ProjectImage src="/projects/everplast/world3.png" alt="Snow Fall world with ice physics and adrenaline mechanics" caption="World 3: Snow Fall." />
+</ImageGrid>
+
+<ProjectImage src="/projects/everplast/world1_cave.png" alt="Cave subsection with glowing platforms, ice hazards, and scattered orbs" caption="A cave subsection inside World 1. Distinct lighting through CanvasModulate, ice platforms, and spike hazards." />
+
+### Progression and Combat
+
+One of the systems I am most proud of is the rank system. Players progress through four ranks (Silver, Gold, Diamond, Glitch), and each one gates real ability unlocks. Silver gives you double jump, wall slide, and wall jump. Gold unlocks the air dash and introduces adrenaline, a resource that regenerates over time and fuels the ice gun. You earn ranks by defeating three story bosses: Fernand, Ostrich, and Cora. I wrote each boss with its own state machine and distinct attack patterns. Fernand cycles through fly, chase, and shoot states, and during the final encounter he switches weapons contextually based on the player's position.
+
+<ProjectImage src="/projects/everplast/rank_view.png" alt="Rank system UI showing Silver, Gold, Diamond, and Glitch tiers with ability descriptions" caption="The rank system. Each tier unlocks new movement and combat abilities." />
+
+<ProjectVideo src="placeholder:Screen recording — a boss fight from start to finish showing attack patterns, phase transitions, and the player dodging/shooting" alt="Boss fight gameplay" caption="A full boss encounter. Attack patterns, phase transitions, and ranged combat." />
+
+I built five equippable guns (water, nail, laser, snow, and ice), each consuming a different ammo type. The ice gun is the interesting one because it draws from the adrenaline pool instead of regular ammo, which creates a tension between using your resource for combat power or saving it for movement abilities. I also built an orb-based economy where players level up health and adrenaline stats at scaling costs, while coins fund shop purchases for powerups, weapons, and consumables. One of the consumables, the glitch orb, slows game time to 75%. On the enemy side, I used a modular component system with interchangeable AI behaviors (patrol, raycast-based chase, flying patrol, water movement, and different damage responses), which let me create variety without writing unique code for every enemy.
+
+<ImageGrid columns={2}>
+  <ProjectImage src="/projects/everplast/shooting_enemy_still.png" alt="Player firing a weapon at an enemy with the HUD showing health, ammo, and adrenaline" caption="Ranged combat with the weapon and ammo HUD visible." />
+  <ProjectImage src="/projects/everplast/weapons.png" alt="The five equippable weapons in the game" caption="The five weapons. Each uses a different ammo type." />
+</ImageGrid>
+
+<ImageGrid columns={2}>
+  <ProjectImage src="/projects/everplast/shop_ui.png" alt="In-game shop UI showing weapon and powerup purchases" caption="The in-game shop. Coins fund weapons, powerups, and consumables." />
+  <ProjectImage src="/projects/everplast/inventory.png" alt="Inventory screen showing consumable items with descriptions" caption="The tabbed inventory. Quick items, collectables, ranks, and stat upgrades." />
+</ImageGrid>
+
+### UI and Save System
+
+The UI was a project within the project and I did not expect it to take as long as it did. The HUD alone tracks health, coins, orbs, an adrenaline bar, weapon ammo, gem collection slots, a powerup timer, and a low-health screen overlay. Beyond that I built a tabbed inventory system (powerups, collectables and equippables, rank descriptions, stat upgrades), an in-game shop, a dialogue system for NPC interactions, a full settings screen with audio sliders, graphic options, and control remapping, and gamepad support that works throughout all of it.
+
+<ProjectImage src="/projects/everplast/settings_ui_general.png" alt="In-game settings menu showing audio sliders, graphics options, and control remapping" caption="The settings menu. Audio, graphics, control rebinding, and language selection." />
+
+The save system writes five profiles to JSON, storing everything: stats, full inventory, equipped items, current rank, collected gems per level, and world progress. Saves trigger on checkpoints, level completion, deaths, and quitting. I organized the physics across nine collision layers (Ground, Static, Player, Entity, Liquid, Projectile, Enemy, Vase, Block) and set up a three-bus audio layout (Master, Music, Audio) with per-level and per-subsection music switching.
+
+<ProjectImage src="/projects/everplast/profiles.png" alt="Save profile selection screen showing five save slots with stats" caption="Five save profiles. Stats, inventory, rank, gems, and world progress all persisted to JSON." />
+
+---
+
+## Scope and Shipping
+
+I originally planned six worlds. Midway through development I cut two of them because I could feel the scope starting to bury me. By the time I finished World 3, I was working on Everplast every single day and the motivation was completely gone. I did not want to abandon the project after putting months into it, but I also could not keep going at that pace. I was exhausted.
+
+So I made a decision that ended up shaping how I think about every project since: I gave up on the game by finishing it. I cut the remaining content, built one final world to close out the story, and started preparing for release. A released game with four worlds is worth more than an unreleased game with six, and I genuinely believe more solo developers need to hear that. It is okay to cut content. It is better to ship.
+
+<CalloutQuote>"I'm basically gonna give up on the game but I'm also going to finish it."</CalloutQuote>
+
+Shipping meant creating the Steam store page, packaging builds through Steamworks, writing the store description, recording screenshots and trailer footage, and dealing with the review process. I was underage at the time and had to have my mother set up the Steamworks account for me. The game went live on February 24, 2022 at $6.99. I remember that feeling clearly. I was making videos about it, sharing it publicly, and for the first time in my life I had a real product that strangers could buy and play. That changed how I saw myself as a developer.
+
+<ProjectImage src="/projects/everplast/steam_page.png" alt="Everplast Steam store page showing the listing, price, description, and tags" caption="The Steam store page. $6.99, four positive reviews, and a real published game." />
+
+---
+
+## Challenges
+
+### Inheriting My Own Bad Code
+
+The hardest part of the project was not building new features. It was going back into the Fields of Elysium codebase and trying to understand what I had written months earlier. I did not comment my code, I did not name things clearly, and I did not organize files in a way that made any sense looking back. A lot of what I tried to build on top of the old code came out buggy, and I ended up rewriting entire systems from scratch because it was faster than trying to extend code I could not follow.
+
+### The Settings Menu
+
+The settings menu is the best example of what went wrong architecturally. It grew to over 1,100 lines because it was actually six completely different systems crammed into one file: a UI menu, an input handler, a save system, a graphics settings manager, an audio mixer, and a focus navigation state machine. I did not realize how bad it was until I went back to add a feature and had to trace through the entire file to understand the control flow. Every time the player dragged a volume slider, it called `apply_settings`, which called `save_settings`, which meant the game was writing to disk on every single tick of the slider. The fullscreen toggle called `save_settings` twice. All of this shipped to production and it all worked, but looking at it now is painful.
+
+<ProjectVideo src="placeholder:Screen recording — scrolling through settings_menu.gd in the Godot script editor, showing the full 1,133 lines and the apply/save chain" alt="Scrolling through the settings menu code" caption="Scrolling through settings_menu.gd. 1,133 lines of UI, audio, save logic, and input handling in one file." />
+
+<ProjectImage src="/projects/everplast/settings_menu_script_editor.png" alt="settings_menu.gd open in the Godot script editor showing the file length and code structure" caption="settings_menu.gd in the Godot script editor. Six responsibilities, one file." />
+
+### The Global Signal Bus
+
+All of the menus were connected through a global signal bus where every UI button in the game emitted a global signal. If I wanted to add a new menu, I had to go to the central file and register more signals. The naming was unclear enough that emitting the wrong signal could wipe a player's save data, and it was not obvious from reading the code that this was even possible. That is the kind of architecture that works until it does not, and I got lucky that it never caused a real problem for players.
+
+<ProjectImage src="/projects/everplast/global_events_ui.png" alt="global_events.gd showing the long list of signal declarations for every UI action" caption="The global signal bus. Every button in the game registered here." />
+
+---
+
+## What I Learned
+
+Everplast made me more careful about two things: scope and code quality.
+
+I used to design games based on what I wanted the final product to be. This project taught me to design around the skills I actually have and the time I can realistically commit. Cutting from six worlds to four was not a failure. It was the reason the game shipped at all. I think about that every time I start a new project now.
+
+The code quality lesson cost me weeks of debugging that could have been avoided. I did not comment my work, I did not separate concerns, and I paid for it every time I had to revisit an old system. The settings menu alone probably set me back days. Every project I have built since has been better organized specifically because of the time I wasted trying to read my own code and failing.
+
+On a more personal level, Everplast was the first time I made something and put it in front of people who did not know me. I recorded dev vlogs, shared builds with strangers on Discord, created a real Steam store page, and published a product that anyone could buy. That full loop, from an idea to a public release, is the experience that changed how I approach building things. I know what it takes to ship now, and I also know what it feels like to almost not finish.
+
+<ProjectVideo src="placeholder:Embed or clip from the first Everplast dev vlog on YouTube — the intro and Fields of Elysium comparison section" alt="Everplast dev vlog clip" caption="From the first dev vlog. Talking about the rebuild from Fields of Elysium." />
+
+[View on Steam](https://store.steampowered.com/app/1896630/Everplast/)

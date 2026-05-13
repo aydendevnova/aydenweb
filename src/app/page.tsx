@@ -1,58 +1,56 @@
 import type { Metadata } from "next"
-import { ProgressNavigation } from "@/components/ProgressNavigation"
 import { FadeIn } from "@/components/FadeIn"
-import { ArrowDown, ArrowRight, ArrowUpRightFromSquareIcon } from "lucide-react";
-import Image, { type StaticImageData } from "next/image";
-import Link from "next/link";
-import rockyImg from "@/assets/rocky.webp";
-import michaelImg from "@/assets/michael.webp";
-import manishImg from "@/assets/manish.webp";
-import type { ReactNode } from "react";
+import { ArrowDown, ArrowUpRightFromSquareIcon } from "lucide-react"
+import Image, { type StaticImageData } from "next/image"
+import Link from "next/link"
+import rockyImg from "@/assets/rocky.webp"
+import michaelImg from "@/assets/michael.webp"
+import manishImg from "@/assets/manish.webp"
+import { ProjectThumbnail } from "@/components/ProjectThumbnail"
+import { Highlight } from "@/components/mdx/Highlight"
+import { getFeaturedProjects } from "@/lib/mdx"
 
 export const metadata: Metadata = {
   title: "Ayden Springer — Developer",
   description:
-    "Computer science student at UNF graduating Spring 2027. Built an AI product assistant at Elysium Health, a pixel art platform with Stripe, and won the Stacks embedded wallet hackathon. Available for full-time roles or contract work.",
+    "Developer building frontend products and design systems. Won the Stacks embedded wallet hackathon, shipped production apps across the Stacks ecosystem, and built a pixel art platform with 600+ users.",
   alternates: {
     canonical: "https://aydenweb.com",
   },
   openGraph: {
     title: "Ayden Springer — Developer",
     description:
-      "Computer science student at UNF graduating Spring 2027. Built an AI product assistant at Elysium Health, a pixel art platform with Stripe, and won the Stacks embedded wallet hackathon.",
+      "Developer building frontend products and design systems. Won the Stacks embedded wallet hackathon, shipped production apps across the Stacks ecosystem, and built a pixel art platform with 600+ users.",
     url: "https://aydenweb.com",
   },
   twitter: {
     title: "Ayden Springer — Developer",
     description:
-      "Computer science student at UNF graduating Spring 2027. Built an AI product assistant at Elysium Health, a pixel art platform with Stripe, and won the Stacks embedded wallet hackathon.",
+      "Developer building frontend products and design systems. Won the Stacks embedded wallet hackathon, shipped production apps across the Stacks ecosystem, and built a pixel art platform with 600+ users.",
   },
 }
 
-const NAV_SECTIONS = [
-  { id: "work", label: "Work" },
-  { id: "testimonials", label: "Testimonials" },
-  { id: "background", label: "Background" },
-]
-
 export default function HomePage() {
+  const featured = getFeaturedProjects()
+
   return (
     <main className="flex min-h-full flex-col bg-[var(--color-bg)]">
-      <ProgressNavigation sections={NAV_SECTIONS} contactHref="#contact" />
-
       {/* Hero */}
       <FadeIn>
-        <section id="hero" className="flex w-full flex-col gap-6 px-6 pt-[120px] pb-[60px] md:gap-8 md:px-12 md:pt-[150px] md:pb-[80px] lg:px-[200px] lg:pt-[180px] lg:pb-[100px]">
-          <h1 className="font-heading text-[36px] font-semibold leading-tight tracking-[-1px] text-[var(--color-text)] md:text-[48px] lg:text-[60px]">
-            Ayden Springer.
+        <section className="mx-auto flex w-full max-w-7xl flex-col gap-5 px-6 pt-[120px] pb-[60px] md:gap-6 md:px-12 md:pt-[150px] md:pb-[80px] lg:px-20 lg:pt-[180px] lg:pb-[100px]">
+          <h1 className="font-heading max-w-3xl text-[32px] font-semibold leading-[1.15] tracking-[-0.5px] text-[var(--color-text)] md:text-[44px] lg:text-[56px]">
+            Shipping software before I could even drive a car.
           </h1>
-          <p className="font-body max-w-3xl text-base leading-[1.5] font-normal text-[var(--color-text)] md:text-lg">
-          Computer Science student at UNF, graduating Spring 2027. <br/><br/>Developed an AI product assistant at Elysium Health, built a pixel art generation platform with Stripe, and won the Stacks embedded wallet hackathon. Available for full-time roles starting Summer 2027 or contract work.
+          <p className="font-body max-w-xl text-[15px] leading-[1.6] text-[var(--color-muted)] md:text-base">
+
+            <Highlight>Shipped a game at 16</Highlight>, built an AI product assistant at Elysium Health, and <Highlight>won the Stacks embedded wallet hackathon</Highlight>.
           </p>
-          <div className="flex flex-wrap items-center gap-4 md:gap-8">
+
+          <p className="font-body text-[15px] leading-[1.6] text-[var(--color-muted)] md:text-base">Computer Science student at UNF, graduating Spring 2027.  <br/>Available for full-time roles starting Summer 2027 or contract work.</p>
+          <div className="flex flex-wrap items-center gap-4 md:gap-8 mt-2">
             <Link
               href="#contact"
-              className="font-body flex items-center gap-2 text-[16px] font-medium text-[var(--color-link)] hover:underline"
+              className="font-body flex items-center gap-2 text-[15px] font-medium text-[var(--color-link)] hover:underline"
             >
               Contact <ArrowDown size={16} />
             </Link>
@@ -60,54 +58,46 @@ export default function HomePage() {
               href="https://aydenweb.com/ayden-resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-body flex items-center gap-2 text-[16px] font-medium text-[var(--color-link)] hover:underline"
+              className="font-body flex items-center gap-2 text-[15px] font-medium text-[var(--color-link)] hover:underline"
             >
-              View Resume <ArrowUpRightFromSquareIcon size={14} />
+              Resume <ArrowUpRightFromSquareIcon size={14} />
             </Link>
           </div>
         </section>
       </FadeIn>
 
-      {/* Selected Work */}
-      <section id="work" className="flex w-full flex-col gap-8 px-6 py-[50px] md:gap-12 md:px-12 md:py-[60px] lg:px-[200px] lg:py-[80px]">
+      {/* Selected Work — Thumbnail Grid */}
+      <section id="work" className="mx-auto w-full max-w-7xl px-6 py-[50px] md:px-12 md:py-[60px] lg:px-20 lg:py-[80px]">
         <FadeIn>
-          <h2 className="font-heading text-[28px] font-semibold text-[var(--color-text)] md:text-[34px] lg:text-[40px]">
+          <h2 className="font-heading mb-8 text-[28px] font-semibold text-[var(--color-text)] md:mb-12 md:text-[34px] lg:text-[40px]">
             Selected Work
           </h2>
         </FadeIn>
-        <div className="max-w-4xl flex flex-col gap-12">
-          <FadeIn>
-            <WorkCard key="pixelnova"
-              title="PixelNova"
-              description="Pixel art generation platform with custom WebAssembly processing module running on Fly.io. Built with Supabase and Stripe for payment processing. Launched in collaboration with Pixel Palette Nation and acquired over 600 users."
-              href="https://pixelnova.app"
-              linkLabel="pixelnova.app"
-              isExternalLink={true}
-            />
-          </FadeIn>
-          <FadeIn>
-            <WorkCard
-              title="Red Block Labs"
-              description="Frontend design and development for Stacks ecosystem projects. Created interfaces for Bitcoin naming systems through BNS One, redesigned the complete frontend for Zero Authority's decentralized freelance platform including escrow and wallet flows, and built landing pages for various clients. Work contributed to securing over $20,000 in grants for clients. Built with React, TypeScript, and Stacks."
-              href="/work/red-block-labs"
-              linkLabel="View Details"
-              isExternalLink={false}
-            />
-          </FadeIn>
-          <FadeIn>
-            <WorkCard
-              title="Elysium Health"
-              description="Engineering internship building a React Native mobile app prototype and AI product assistant. Implemented health safeguards to avoid medical claims, integrated knowledge retrieval, and built tool-calling functionality for supplement recommendations."
-              href="https://www.elysiumhealth.com/"
-              linkLabel="elysiumhealth.com"
-              isExternalLink={true}
-            />
-          </FadeIn>
-        </div>
+        <FadeIn>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((project) => (
+              <ProjectThumbnail
+                key={project.frontmatter.slug}
+                title={project.frontmatter.title}
+                slug={project.frontmatter.slug}
+                color={project.frontmatter.color}
+                thumbnail={project.frontmatter.thumbnail}
+              />
+            ))}
+          </div>
+          <div className="mt-8">
+            <Link
+              href="/work"
+              className="font-body text-[15px] font-medium text-[var(--color-link)] hover:underline"
+            >
+              View all projects &rarr;
+            </Link>
+          </div>
+        </FadeIn>
       </section>
 
       {/* Testimonials */}
-      <section id="testimonials" className="flex w-full flex-col gap-8 px-6 py-[50px] md:gap-12 md:px-12 md:py-[60px] lg:px-[200px] lg:py-[80px]">
+      <section id="testimonials" className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 py-[50px] md:gap-12 md:px-12 md:py-[60px] lg:px-20 lg:py-[80px]">
         <FadeIn>
           <h2 className="font-heading text-[28px] font-semibold text-[var(--color-text)] md:text-[34px] lg:text-[40px]">
             Testimonials
@@ -145,63 +135,63 @@ export default function HomePage() {
 
       {/* Background */}
       <FadeIn>
-        <section id="background" className="flex w-full flex-col gap-6 px-6 py-[50px] md:gap-8 md:px-12 md:py-[60px] lg:px-[200px] lg:py-[80px]">
+        <section id="background" className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 py-[50px] md:gap-10 md:px-12 md:py-[60px] lg:px-20 lg:py-[80px]">
           <h2 className="font-heading text-[28px] font-semibold text-[var(--color-text)] md:text-[34px] lg:text-[40px]">
             Background
           </h2>
-          <p className="font-body max-w-[800px] text-[16px] leading-[1.6] text-[var(--color-text)]">
-            I started building games in high school, shipping <Link className="text-[var(--color-link)] hover:underline inline-flex items-center gap-1" href="https://store.steampowered.com/app/1896630/Everplast/" target="_blank" rel="noopener noreferrer" >Everplast <ArrowUpRightFromSquareIcon size={12} /></Link> to Steam before graduation.
-            <br /><br/>I transitioned to web development before starting college, working with startups and
-            DAOs on products that secured grant funding. I recently completed an engineering internship at Elysium Health, building a mobile app prototype and AI-powered product assistant with a focus on safety and regulatory alignment. <br/><br/>After, I won an <Link className="text-[var(--color-link)] hover:underline inline-flex items-center gap-1" href="https://dorahacks.io/hackathon/embedded-wallet/winner" target="_blank" rel="noopener noreferrer" >embedded wallet hackathon <ArrowUpRightFromSquareIcon size={12} /></Link>, later working on a @turnkey/stacks SDK with Stacks Labs and Turnkey. I am currently a third-year computer science student at the University of North Florida, graduating Spring 2027.
-          </p>
+
+          <div className="flex max-w-[800px] flex-col gap-6">
+            <div className="flex flex-col gap-4">
+              <h3 className="font-heading text-[22px] font-semibold text-[var(--color-text)]">
+                Everplast
+              </h3>
+              <p className="font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
+                I started building software in high school, teaching myself C# and Unity to build Everplast — <Highlight>a full-length action-adventure game that I shipped to Steam at 16</Highlight>. The project took over a year of solo development: level design, combat systems, UI, and managing the entire Steam publishing pipeline. It was a crash course in shipping something real, dealing with player feedback, and pushing through the long stretch between &ldquo;this is fun to build&rdquo; and &ldquo;this is done.&rdquo;
+              </p>
+
+              {/* Everplast image placeholders */}
+              <div className="mt-2 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="flex aspect-video items-center justify-center rounded-xl border-2 border-dashed border-[var(--color-border)]" style={{ backgroundColor: "#2C241608" }}>
+                  <span className="font-body text-sm text-[var(--color-muted)]">Everplast gameplay screenshot</span>
+                </div>
+                <div className="flex aspect-video items-center justify-center rounded-xl border-2 border-dashed border-[var(--color-border)]" style={{ backgroundColor: "#2C241608" }}>
+                  <span className="font-body text-sm text-[var(--color-muted)]">Steam store page</span>
+                </div>
+              </div>
+
+              <p className="font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
+                <Link className="text-[var(--color-link)] hover:underline inline-flex items-center gap-1" href="https://store.steampowered.com/app/1896630/Everplast/" target="_blank" rel="noopener noreferrer">
+                  View on Steam <ArrowUpRightFromSquareIcon size={12} />
+                </Link>
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              <h3 className="font-heading text-[22px] font-semibold text-[var(--color-text)]">
+                Elysium Health
+              </h3>
+              <p className="font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
+                I completed an engineering internship at Elysium Health, building <Highlight>a React Native mobile app prototype and an AI-powered product assistant</Highlight>. The AI system required careful implementation of health safeguards to avoid medical claims, integrated knowledge retrieval for their supplement line, and tool-calling functionality for personalized recommendations. The work bridged product, engineering, and regulatory requirements — a useful education in building things that need to be both useful and careful.
+              </p>
+              <p className="font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
+                <Link className="text-[var(--color-link)] hover:underline inline-flex items-center gap-1" href="https://www.elysiumhealth.com/" target="_blank" rel="noopener noreferrer">
+                  elysiumhealth.com <ArrowUpRightFromSquareIcon size={12} />
+                </Link>
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              <h3 className="font-heading text-[22px] font-semibold text-[var(--color-text)]">
+                Currently
+              </h3>
+              <p className="font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
+                I am a third-year computer science student at the University of North Florida, graduating Spring 2027. Available for full-time roles starting Summer 2027 or contract work now.
+              </p>
+            </div>
+          </div>
         </section>
       </FadeIn>
-
     </main>
-  );
-}
-
-function WorkCard({
-  title,
-  description,
-  href,
-  linkLabel,
-  isExternalLink,
-}: {
-  title: string
-  description: string | ReactNode
-  href?: string
-  linkLabel?: string
-  isExternalLink: boolean
-}) {
-  return (
-    <div className="flex flex-col gap-3 border-b border-[var(--color-border)] pb-8">
-      <h3 className="font-heading text-[24px] font-semibold text-[var(--color-text)]">
-        {title}
-      </h3>
-      <p className="font-body max-w-[800px] text-[16px] leading-[1.6] text-[var(--color-text)]">
-        {typeof description === 'string' ? description : description}
-      </p>
-      {href && linkLabel && (
-        href.startsWith("/") ? (
-          <Link
-            href={href}
-            className="font-body flex items-center gap-2 text-[16px] font-medium text-[var(--color-link)] hover:underline"
-          >
-            {linkLabel} {isExternalLink ? <ArrowUpRightFromSquareIcon size={14} /> : <ArrowRight size={14} />}
-          </Link>
-        ) : (
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-body flex items-center gap-2 text-[16px] font-medium text-[var(--color-link)] hover:underline"
-          >
-            {linkLabel} {isExternalLink ? <ArrowUpRightFromSquareIcon size={14} /> : <ArrowRight size={14} />}
-          </a>
-        )
-      )}
-    </div>
   )
 }
 

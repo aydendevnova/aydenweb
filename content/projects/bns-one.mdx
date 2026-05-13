@@ -1,0 +1,73 @@
+---
+title: "BNS One"
+subtitle: "A modern interface for Bitcoin Name System domains"
+slug: "bns-one"
+color: "#2563EB"
+thumbnail: "placeholder:BNS One — domain search interface"
+role: "Sole Developer"
+timeline: "2023 – 2024"
+team:
+  - "Ayden Springer"
+  - "Rocky Nguyen"
+  - "Christa Vu"
+collaborators: "Built through Red Block Labs"
+tools:
+  - "React"
+  - "TypeScript"
+  - "Stacks.js"
+  - "Tailwind CSS"
+order: 3
+featured: false
+category: "web-development"
+---
+
+## Overview
+
+BNS One is the frontend for Bitcoin Name System domain management. BNS is the naming protocol on the Stacks blockchain — <Highlight>it maps human-readable names (like `ayden.btc`) to Stacks addresses</Highlight>, functioning similarly to ENS on Ethereum but anchored to Bitcoin's security model. BNS One provides the interface where users search for available names, register them, manage their domains, and trade on a built-in marketplace.
+
+I built the frontend as the sole developer through Red Block Labs, with design direction from Christa Vu.
+
+<ProjectImage src="placeholder:BNS One — homepage with search bar and featured domains" alt="BNS One homepage" />
+
+---
+
+## The Challenge
+
+The existing BNS interfaces were functional but fragmented. Searching, registering, and managing names happened across different tools, and the registration process required understanding transaction fees, name availability rules, and Stacks wallet mechanics. <Highlight>The goal was a single, cohesive interface that made BNS domain management feel like buying a .com — search, register, manage, trade — all in one place.</Highlight>
+
+---
+
+## Search and Registration
+
+The search experience needed to be fast and informative. Typing a name shows instant availability, pricing, and expiration status. The registration flow handles the multi-step Stacks transaction (preorder + register) behind a single "Register" action, with clear progress indicators for each on-chain confirmation.
+
+<ProjectImage src="placeholder:BNS One — search results showing availability and pricing" alt="BNS search results" />
+
+<ImageGrid columns={2}>
+  <ProjectImage src="placeholder:BNS One — registration flow step 1 (name selection)" alt="Registration step 1" />
+  <ProjectImage src="placeholder:BNS One — registration flow step 2 (confirmation + transaction)" alt="Registration step 2" />
+</ImageGrid>
+
+---
+
+## Domain Dashboard
+
+Registered domain owners get a management dashboard showing all their BNS names, expiration dates, linked addresses, and renewal actions. The interface surfaces the information that matters — is this name about to expire, is it pointed to the right address — without requiring the user to query the blockchain directly.
+
+<ProjectImage src="placeholder:BNS One — domain management dashboard" alt="Domain dashboard" />
+
+---
+
+## Marketplace
+
+The trading marketplace allows users to list their BNS names for sale, browse available names, and complete purchases through on-chain escrow. The listing process walks sellers through pricing and listing duration, while buyers see a clean catalog with filtering by price, length, and category.
+
+<ProjectImage src="placeholder:BNS One — marketplace with listed domains and filters" alt="BNS marketplace" />
+
+---
+
+## Results
+
+BNS One is live at [bns.one](https://bns.one) and serves as <Highlight>the primary frontend for BNS domain management</Highlight> in the Stacks ecosystem.
+
+[Visit BNS One](https://bns.one)
