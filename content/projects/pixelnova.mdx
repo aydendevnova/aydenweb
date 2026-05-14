@@ -37,7 +37,7 @@ PixelNova is a pixel art generation and conversion platform I built and launched
 
 The founding insight was something I noticed while using Midjourney, DALL-E, and Stable Diffusion to generate pixel art. The images they produce look pixelated at a glance, but they are not actually constructed at the pixel level. They are rasterized diffusion outputs with anti-aliasing, color gradients, and inconsistent pixel sizes baked in. If you zoom in on an AI-generated "pixel art" image, you see hundreds of colors bleeding into each other where there should be hard edges. Drop one of these images into a game engine or a pixel art editor and it falls apart immediately.
 
-<ImageGrid columns={2}>
+<ImageGrid columns={2} uniform>
   <ProjectImage src="/projects/pixelnova/ai_pixel_art_style_comp.png" alt="Zoomed-in view of AI-generated pixel art showing inconsistent pixel sizes, blurred edges, and anti-aliasing artifacts" caption="AI 'pixel art' zoomed in. Blurred edges, inconsistent pixel sizes, hundreds of colors." />
   <ProjectImage src="/projects/pixelnova/real_pixel_art_comp.png" alt="True pixel art of the same character with clean edges, consistent pixel grid, and limited color palette" caption="True pixel art. Clean grid, hard edges, limited palette." pixelated />
 </ImageGrid>
@@ -112,7 +112,7 @@ The difference becomes obvious when you zoom in. The original AI output has grai
   <ProjectImage src="/projects/pixelnova/true_pixel_art.png" alt="The same arctic fox after PixelNova conversion, showing clean pixel boundaries and limited colors" caption="After conversion. True pixel art." pixelated />
 </ImageGrid>
 
-<ImageGrid columns={2}>
+<ImageGrid columns={2} uniform>
   <ProjectImage src="/projects/pixelnova/zoomed_in_ai_image.png" alt="Zoomed-in section of the AI output showing blurred pixel edges and color gradients where there should be hard boundaries" caption="AI output zoomed in. Blurred, grainy, hundreds of colors." />
   <ProjectImage src="/projects/pixelnova/zoomed_pixel_art.png" alt="Zoomed-in section of the converted pixel art showing perfect square pixels with clean boundaries and limited colors" caption="Converted pixel art zoomed in. Perfect squares, clean edges, countable colors." pixelated />
 </ImageGrid>

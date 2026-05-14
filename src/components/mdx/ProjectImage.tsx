@@ -51,13 +51,13 @@ export function ProjectImage({
 
   return (
     <figure className="my-8 in-[.image-grid]:my-0">
-      <div className="relative overflow-hidden rounded-xl in-[.image-grid]:aspect-square">
+      <div className="relative overflow-hidden rounded-xl in-[.image-grid-uniform]:aspect-square">
         <Image
           src={src}
           alt={alt}
           width={width}
           height={height}
-          className={`h-auto w-full in-[.image-grid]:absolute in-[.image-grid]:inset-0 in-[.image-grid]:h-full in-[.image-grid]:object-cover${pixelClass}`}
+          className={`h-auto w-full in-[.image-grid-uniform]:absolute in-[.image-grid-uniform]:inset-0 in-[.image-grid-uniform]:h-full in-[.image-grid-uniform]:object-cover${pixelClass}`}
           unoptimized
         />
       </div>
