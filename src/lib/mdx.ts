@@ -12,6 +12,8 @@ export interface ProjectFrontmatter {
   slug: string
   color: string
   thumbnail: string
+  thumbnailFit?: "cover" | "contain"
+  heroImage?: string
   thumbnailSecondary?: string
   splitHero?: boolean
   role: string

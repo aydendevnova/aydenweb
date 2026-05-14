@@ -4,6 +4,7 @@ subtitle: "From hackathon to SDK contributor to ecosystem builder"
 slug: "stacks-hackathon"
 color: "#5546FF"
 thumbnail: "/projects/stacks-turnkey-hackathon/thumb.png"
+thumbnailFit: "contain"
 thumbnailSecondary: "/projects/stacks-turnkey-hackathon/btcu-dashboard.png"
 splitHero: false
 role: "Engineer & SDK Lead"
@@ -34,9 +35,7 @@ Bitcoin University (BTCU) is an education protocol built on Stacks that turns le
 
 I worked on BTCU with [Fred Martinez](https://x.com/fred_dog93) and [Michael Jagdeo](https://x.com/attractfund1ng). We built it using AI-assisted coding tools (Cursor and Claude Code), and the entire team operated remotely during the hackathon. My handle is [@aydendevnova](https://x.com/aydendevnova).
 
-<ProjectImage src="/projects/stacks-turnkey-hackathon/btcu-homepage.png" alt="Bitcoin University landing page showing 'Learn Bitcoin with Rewards' headline with Stacks and sBTC branding" caption="The BTCU landing page. Courses, rewards, and on-chain credentials." />
-
----
+<ProjectImage src="/projects/stacks-turnkey-hackathon/turnkey-stx-promo.png" alt="Embedded Wallet Challenge" caption="Embedded Wallet Challenge" />
 
 ## The Problem
 
@@ -78,7 +77,7 @@ The hackathon submission caught the attention of the Stacks Labs team. They invi
 
 <ProjectImage src="/projects/stacks-turnkey-hackathon/luma-buenos-aires-cover.jpg" alt="Bitcoin Builders Buenos Aires event cover showing the conference logo and November 19, 2025 date" caption="Bitcoin Builders: Buenos Aires. November 19, 2025." />
 
-That week was the first time the team met in person. We spent the days at the hacker house, watched other teams demo their projects, and had conversations with the Stacks Labs developer relations team about what came next for BTCU and the broader embedded wallet tooling on Stacks.
+That week was the first time some of the team met in person. They spent the days at the hacker house, watched other teams demo their projects, and had conversations with the Stacks Labs developer relations team about what came next for BTCU and the broader embedded wallet tooling on Stacks. <Highlight>While I attended other events with our team, I did not make it to this one because I have not received my passport yet.</Highlight>
 
 <ProjectImage src="/projects/stacks-turnkey-hackathon/stacks-hackerhouse-team.jpg" alt="Group photo of all builders at the Stacks Hacker House in Buenos Aires" caption="The Stacks Hacker House crew in Buenos Aires." />
 
@@ -90,19 +89,19 @@ The hackathon exposed a real gap in the developer tooling. There was no clean Ty
 
 After Buenos Aires, Eric Choy from Stacks Labs reached out with a grant proposal to integrate Stacks natively into Turnkey's SDK ecosystem. <Highlight>I led the grant negotiation and the technical work.</Highlight>
 
-The initial proposal was straightforward, but I pushed back on the scope and expectations before signing. I asked how polished the SDK needed to be, whether it should match the quality bar of existing Turnkey modules (Solana, Ethers, CosmJS), who would maintain it if upstream APIs changed, and how the grants committee would judge success six months after launch. These were not casual questions. I wanted to understand exactly what "out-of-the-box Stacks support" meant before committing to deliver it.
+The initial proposal was straightforward, but I pushed back on the scope and expectations before signing. I asked how polished the SDK needed to be, whether it should match the quality bar of existing Turnkey modules (Solana, Ethers, CosmJS), who would maintain it if upstream APIs changed, and how the grants committee would judge success six months after launch. These were not casual questions. <Highlight>I wanted to understand exactly what "out-of-the-box Stacks support" meant before committing to deliver it.</Highlight>
 
 <CalloutQuote>"We are approaching this as a serious, long-term piece of infrastructure rather than a one-off hackathon wrapper, so I want to be very transparent about what is realistic at different levels of depth."</CalloutQuote>
 
-Stacks Labs agreed to scope it as a beta: functional signing, basic error handling, example apps for both custodial and non-custodial architectures, and documentation. We settled on $3,000 across two installments with four phased deliverables. I signed the contract in late December 2025 and started building in January 2026.
+Stacks Labs agreed to <Highlight>scope it as a beta</Highlight>: functional signing, basic error handling, example apps for both custodial and non-custodial architectures, and documentation. We settled on $3,000 across two installments with four phased deliverables. I signed the contract in late December 2025 and started building in January 2026.
 
 ### The SDK
 
 The `@turnkey/stacks` package follows the same patterns as existing Turnkey SDK modules. It exports a `TurnkeySigner` class that accepts any Turnkey client (server or browser), derives Stacks addresses from Turnkey-managed secp256k1 keys, and signs STX transfers by computing the transaction's `sigHashPreSign`, sending it to Turnkey with `HASH_FUNCTION_NO_OP` (so Turnkey signs the raw bytes without double-hashing), and assembling the 65-byte VRS signature.
 
-The hardest part was understanding the signing flow. Stacks transactions require signing a pre-computed hash, but Turnkey's default behavior applies SHA-256 before signing. If you do not override that behavior with the NO_OP flag, every signature comes back invalid and the error message tells you nothing useful. I spent a full day tracing through the Stacks.js source code to understand exactly which bytes needed to be signed and in what order before the first transaction went through on testnet.
+<Highlight>The hardest part was understanding the signing flow.</Highlight> Stacks transactions require signing a pre-computed hash, but Turnkey's default behavior applies SHA-256 before signing. If you do not override that behavior with the NO_OP flag, every signature comes back invalid and the error message tells you nothing useful. <Highlight>I spent a full day tracing through the Stacks.js source code</Highlight> to understand exactly which bytes needed to be signed and in what order before the first transaction went through on testnet.
 
-I also built two example applications: a custodial server (Node.js CLI) where the server owns the wallet and signs with API keys, and a non-custodial client (Next.js) where each user owns their wallet in a Turnkey sub-organization and signs from the browser. Both demonstrate the complete flow from wallet creation to broadcast.
+<Highlight>I also built two example applications</Highlight>: a custodial server (Node.js CLI) where the server owns the wallet and signs with API keys, and a non-custodial client (Next.js) where each user owns their wallet in a Turnkey sub-organization and signs from the browser. Both demonstrate the complete flow from wallet creation to broadcast.
 
 <ProjectImage src="placeholder:Code screenshot showing the TurnkeySigner class and signHash method from @turnkey/stacks" alt="TurnkeySigner SDK code" caption="The TurnkeySigner class. Address derivation, transaction signing, and broadcast in one interface." />
 

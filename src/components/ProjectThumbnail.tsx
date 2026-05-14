@@ -6,10 +6,11 @@ interface ProjectThumbnailProps {
   slug: string
   color: string
   thumbnail: string
+  thumbnailFit?: "cover" | "contain"
   description?: string
 }
 
-export function ProjectThumbnail({ title, slug, color, thumbnail, description }: ProjectThumbnailProps) {
+export function ProjectThumbnail({ title, slug, color, thumbnail, thumbnailFit = "cover", description }: ProjectThumbnailProps) {
   const hasImage = thumbnail && !thumbnail.includes("placeholder")
 
   return (
@@ -23,7 +24,7 @@ export function ProjectThumbnail({ title, slug, color, thumbnail, description }:
             src={thumbnail}
             alt={title}
             fill
-            className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+            className={`object-center transition-transform duration-500 group-hover:scale-105 ${thumbnailFit === "contain" ? "object-contain p-4" : "object-cover"}`}
             sizes="(max-width: 1024px) 180px, 33vw"
           />
         ) : (

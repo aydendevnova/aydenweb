@@ -57,6 +57,7 @@ export default function WorkPage() {
                     slug={project.frontmatter.slug}
                     color={project.frontmatter.color}
                     thumbnail={project.frontmatter.thumbnail}
+                    thumbnailFit={project.frontmatter.thumbnailFit}
                   />
                 ))}
               </div>

@@ -53,6 +53,7 @@ export default async function ProjectPage({ params }: PageProps) {
         subtitle={frontmatter.subtitle}
         color={frontmatter.color}
         thumbnail={frontmatter.thumbnail}
+        heroImage={frontmatter.heroImage}
         thumbnailSecondary={frontmatter.thumbnailSecondary}
         splitHero={frontmatter.splitHero}
       />

@@ -1,24 +1,25 @@
 ---
 title: "Zero Authority"
-subtitle: "Frontend for a decentralized freelance platform on Bitcoin"
+subtitle: "What happens when you roast a DAO's frontend in a Twitter Space and they hire you?"
 slug: "zero-authority"
-color: "#1A3A4A"
-thumbnail: "placeholder:Zero Authority app dashboard"
+color: "#4B2D9E"
+thumbnail: "/projects/zero-authority/thumb.png"
+thumbnailFit: "contain"
 role: "Sole Developer"
-timeline: "2023 – 2025"
+timeline: "2024 – 2026"
 team:
   - "Ayden Springer"
   - "Rocky Nguyen"
-  - "Christa Vu"
-  - "Tien Tran"
-  - "John Ha"
+  - "Christina Vu"
 collaborators: "Built through Red Block Labs"
 tools:
   - "React"
+  - "Next.js"
   - "TypeScript"
   - "Stacks.js"
   - "Tailwind CSS"
-description: "Frontend for a decentralized freelance platform on Bitcoin, built through Red Block Labs."
+  - "Figma"
+description: "Two years of frontend development for a decentralized reputation and freelance platform on Bitcoin's Stacks network."
 order: 2
 featured: true
 category: "featured"
@@ -26,57 +27,97 @@ category: "featured"
 
 ## Overview
 
-Zero Authority is a decentralized freelance platform built on the Stacks blockchain. It enables freelancers and clients to create, negotiate, and complete projects with <Highlight>smart contract escrow — no middleman taking a cut</Highlight>, no payment disputes resolved by a platform's support team. The escrow releases funds when both parties confirm completion, and the entire transaction history lives on-chain.
+Zero Authority is a decentralized community protocol built on the Stacks blockchain. It connects Web3 creators, developers, and builders through a reputation-based system where work history, contributions, and peer interactions live on-chain. <Highlight>Think of it as a permissionless freelance marketplace where your reputation is your resume, and smart contracts handle the payments.</Highlight> The platform runs on Bitcoin through the Stacks network, settling transactions and building what the team calls an "on-chain economy powered by reputation."
 
-I was the sole developer on the V2 frontend redesign, working within Red Block Labs — a development team led by Rocky Nguyen, with design from Christa Vu.
+I have been the sole developer on Zero Authority's frontend since 2024, working within Red Block Labs alongside Rocky Nguyen (lead) and Christina Vu (designer). What started as a single redesign has grown into a two-year engagement spanning the core platform, a quest system, an events module, and a standalone endowment site.
 
-<ProjectImage src="placeholder:Zero Authority — full dashboard view showing active projects" alt="Zero Authority dashboard" />
-
----
-
-## The Problem
-
-The V1 frontend had the functionality but not the experience. Freelancers needed to understand wallet connections, escrow mechanics, and on-chain transactions just to post a project. The interface assumed familiarity with Web3 concepts that most freelancers don't have.
-
-<Highlight>The core challenge was making decentralized escrow feel as natural as Upwork's payment flow</Highlight> — without hiding the blockchain mechanics that make the platform trustworthy in the first place.
+<ProjectImage src="/projects/zero-authority/home_page.png" alt="Zero Authority landing page showing the tagline: The onchain economy, powered by reputation" caption="The V2 landing page. The onchain economy, powered by reputation." />
 
 ---
 
-## What I Built
+## How It Started
 
-<Highlight>The V2 redesign covered 25+ pages</Highlight> across the entire platform. The key flows:
+Rocky Nguyen was in a Twitter Space with Zero, one of Zero Authority's cofounders. The platform's V1 design was, to put it politely, rough. Rocky did not put it politely. He roasted the entire frontend live in the Space. Zero took it well, looked at the work our team had shipped for other projects, and hired Red Block Labs to rebuild the platform from scratch. That conversation became the start of what we now call Platform V2.
 
-### Project Creation
+The V1 had the functionality. Users could connect wallets, browse creator profiles, and interact with the community. But the interface assumed everyone already understood Web3 concepts like wallet connections and on-chain transactions, and the visual design did not inspire confidence in a platform asking users to trust it with their money and reputation. Zero wanted something that looked and felt like a real product, something that could onboard people who had never touched a Stacks wallet before.
 
-A multi-step project creation flow that guides clients through scoping, budget setting, and milestone definition. Each milestone maps to an on-chain escrow contract, but the interface presents it as a simple progress tracker.
+<ProjectImage src="/projects/zero-authority/figma_overview.png" alt="Figma file overview showing the full scope of Zero Authority V2 design screens" caption="The Figma overview. Christina designed dozens of screens across the platform." />
 
-<ProjectImage src="placeholder:Zero Authority — project creation flow (multi-step form)" alt="Project creation flow" />
+---
 
-### Escrow Management
+## The Platform
 
-The escrow dashboard shows the state of all funds — locked, in dispute, released — with clear actions at each stage. Status updates map directly to smart contract states, but the language is "Payment released" rather than "Contract executed."
+### Creator Profiles and Reputation
+
+The core of Zero Authority is the creator directory. Each user has a profile displaying their skills, network affiliation (Stacks Network), and body of work. Other users can message them, offer gigs, or review their contributions. The profiles are pseudonymous by default, tied to .btc names or wallet addresses rather than real identities. This is deliberate. Zero Authority treats privacy as a feature, not a limitation, enabling people to build professional reputations without exposing personal data.
+
+<ProjectImage src="/projects/zero-authority/received_gigs.png" alt="Zero Authority gig management interface showing received gig offers with status indicators" caption="Gig management. Incoming offers, statuses, and actions in one view." />
+
+### Bounties and Gigs
+
+The bounty system is where reputation turns into real work. Clients post bounties with defined scopes, and creators can browse, filter, and apply. I built the bounty discovery interface to surface relevant opportunities by category and network, with clear calls to action that do not require the user to understand the underlying smart contract mechanics. When a gig is accepted, the payment terms are locked into an on-chain escrow, and both parties can track progress through the platform.
 
 <ImageGrid columns={2}>
-  <ProjectImage src="placeholder:Escrow — funds locked state" alt="Escrow locked state" />
-  <ProjectImage src="placeholder:Escrow — payment released confirmation" alt="Payment released" />
+  <ProjectImage src="/projects/zero-authority/find_bounties.png" alt="Find bounties interface with filtering and categorized bounty listings" caption="Bounty discovery." />
+  <ProjectImage src="/projects/zero-authority/post_a_bounty.png" alt="Post a bounty form with scope, budget, and milestone fields" caption="Posting a bounty." />
 </ImageGrid>
 
 ### Wallet Integration
 
-Wallet connection and transaction signing needed to feel like logging in and clicking "Pay." I built the authentication layer to handle multiple Stacks wallets, persist sessions, and present signing requests with human-readable summaries of what the transaction does.
-
-<ProjectImage src="placeholder:Zero Authority — wallet connection and transaction signing" alt="Wallet integration" />
-
-### Analytics Dashboard
-
-Project analytics for both freelancers and clients — earnings over time, project completion rates, payment history. All data pulled from on-chain transactions and rendered into standard dashboard patterns.
-
-<ProjectImage src="placeholder:Zero Authority — analytics dashboard with charts" alt="Analytics dashboard" />
+Every meaningful action on Zero Authority touches the Stacks blockchain. Connecting a wallet, staking STX for a quest, accepting a gig, or releasing payment from escrow all require transaction signing. I built the authentication layer using Stacks.js to handle wallet connections, session persistence, and transaction signing. The goal was to make signing a transaction feel as natural as confirming a payment on any other platform, with human-readable descriptions of what each transaction does before the user approves it.
 
 ---
 
-## Results
+## Quests
 
-The work contributed to Zero Authority <Highlight>securing grant funding from the Stacks Foundation</Highlight>. The V2 frontend is live at [zeroauthoritydao.com](https://zeroauthoritydao.com/).
+The Quest system was one of the more complex features I shipped. Zero wanted a way to drive engagement beyond the bounty marketplace, something that would give creators structured goals and reward participation.
+
+The system works on a template model. There are ten standardized Web3 event types, each with its own icon, and every quest contains three activities drawn from that library. Creators stake 5 STX to launch a quest (the stake goes to the community treasury), and participants lock 1 STX to join, which they get back on completion. Each quarter, up to 21 participants are randomly selected as winners from the pool of completions. The staking mechanic is interesting because it creates real commitment on both sides. Creators cannot spam quests, and participants have skin in the game.
+
+<ProjectImage src="placeholder:Quest interface showing active quests with progress indicators, staking requirements, and activity types" alt="Quest system interface" caption="The quest system. Staking, activities, and seasonal resets." />
+
+Zero went through several design iterations on this feature. He initially wanted visible scores, then pivoted to "ambiguous symbols" to make the experience feel less competitive and more exploratory. Christina designed the visual language around that constraint, and I built the frontend to support both the template system and the seasonal reputation leaderboard that resets every three months. During a meeting in November 2025, the team also rebranded "Bounty Hubs" to "Campaign Hubs" to better reflect the broader scope of community-organized work.
+
+---
+
+## Events
+
+In March 2026, I built the frontend for Zero Authority's events module. The events system lets creators discover, join, and create events within the Stacks ecosystem. The event details page was the most time-consuming part of the build because each event has its own state (upcoming, active, completed), attendee lists, and metadata that all need to render correctly and update in real time.
+
+I completed the Find Events and Join Events pages first, then built out the Create Events flow and the associated modals. I pushed the full events implementation to a dedicated branch for Zero to review and deploy to testnet.
+
+<ProjectImage src="placeholder:Events discovery page showing filterable event cards with dates, attendee counts, and join buttons" alt="Zero Authority events page" caption="The events module. Discovery, details, and creation." />
+
+---
+
+## The Endowment Site
+
+The most recent project is a standalone informational site for Zero Authority's endowment initiative. Zero requested a separate, public-facing site that explains the endowment's mission and projects without requiring a wallet connection. The design system was different enough from the main platform that I recommended building it in a separate repository, and Zero agreed.
+
+The scope shifted more than once during this project. Zero initially wanted a reduced set of pages, cutting the Events Discovery and Survey pages and limiting the project detail views. Then, a few days later, he reversed course and asked for the full original scope. I had already structured the codebase to accommodate either direction, so the reversal did not cost us time. I also added a login system with a magic link flow and social sign-in options (X, GitHub, LinkedIn, Google, Microsoft) instead of the wallet connection used on the main platform.
+
+I finished the initial scope by May 7, 2026, roughly two to three weeks ahead of the deadline. Zero sent a bonus for the fast delivery.
+
+<ProjectImage src="placeholder:Endowment site landing page showing the organization's mission and project overview without wallet integration" alt="Zero Authority endowment site" caption="The endowment site. Public-facing, no wallet required." />
+
+---
+
+## Working With Zero
+
+This engagement has been unusual in the best way. Most client relationships have a defined start and end. Zero Authority has been continuous. Zero keeps coming back with new features, new modules, and new ideas because the working relationship is built on trust and consistent delivery. Rocky handles the client relationship and scoping, Christina designs every screen before I touch code, and I build and ship the frontend.
+
+<CalloutQuote>"Zero Authority has revolutionized how we engage in the Web3 space. The transparency and trust built into the platform are unparalleled." — xyzero.btc, Cofounder of Zero Authority</CalloutQuote>
+
+The scope changes are a real part of the story. Almost every project has been re-scoped at least once. The Degrants feature was re-scoped immediately after the initial correspondence. The Quests design changed mid-project when Zero pivoted to the template-based system. The Endowment site scope reversed direction within a week. I have learned to build with flexibility in mind, structuring code so that adding or removing features does not require tearing apart what already exists. That is a skill I would not have developed working on projects with rigid specs.
+
+---
+
+## What I Learned
+
+Two years of continuous work for one client has taught me things that shorter engagements cannot. I learned how to maintain a codebase that grows in unexpected directions, how to accommodate scope changes without losing momentum, and how to communicate technical constraints to a non-technical founder who has strong opinions about what the product should feel like.
+
+I also learned the difference between building a feature and building a platform. Each module I shipped (the core platform, Quests, Events, the Welcome page, the Endowment site) had to feel like it belonged to the same product, even when the design requirements evolved between projects. Christina's design consistency helped enormously, but on the development side, that meant investing in shared component patterns and a codebase architecture that could absorb new features without growing fragile.
+
+The blockchain-specific work pushed my frontend skills in directions that traditional web development does not. Transaction signing flows, wallet session management, on-chain state rendering, and staking mechanics all required me to understand what was happening at the contract level, not just the UI level. I could not build a staking interface without understanding how the STX lock and refund cycle actually worked.
 
 [Visit Zero Authority](https://zeroauthoritydao.com/)

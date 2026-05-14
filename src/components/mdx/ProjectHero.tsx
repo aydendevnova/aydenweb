@@ -7,6 +7,7 @@ interface ProjectHeroProps {
   subtitle: string
   color: string
   thumbnail: string
+  heroImage?: string
   thumbnailSecondary?: string
   splitHero?: boolean
 }
@@ -16,10 +17,12 @@ export function ProjectHero({
   subtitle,
   color,
   thumbnail,
+  heroImage,
   thumbnailSecondary,
   splitHero = true,
 }: ProjectHeroProps) {
-  const hasImage = thumbnail && !thumbnail.includes("placeholder")
+  const displayImage = heroImage ?? thumbnail
+  const hasImage = displayImage && !displayImage.includes("placeholder")
   const hasSecondary =
     thumbnailSecondary && !thumbnailSecondary.includes("placeholder")
   const isSplit = hasImage && hasSecondary && splitHero
@@ -39,7 +42,7 @@ export function ProjectHero({
               }}
             >
               <Image
-                src={thumbnail}
+                src={displayImage}
                 alt={`${title} — screenshot 1`}
                 fill
                 className="object-cover object-center"
@@ -73,7 +76,7 @@ export function ProjectHero({
       ) : hasImage ? (
         <div className="relative mx-auto h-[240px] w-full max-w-3xl md:h-[320px] lg:h-[400px]">
           <Image
-            src={thumbnail}
+            src={displayImage}
             alt={title}
             fill
             className="object-contain"

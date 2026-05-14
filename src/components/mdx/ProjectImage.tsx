@@ -7,6 +7,7 @@ interface ProjectImageProps {
   fallbackColor?: string
   width?: number
   height?: number
+  pixelated?: boolean
 }
 
 export function ProjectImage({
@@ -16,6 +17,7 @@ export function ProjectImage({
   fallbackColor = "#E8E4DF",
   width = 960,
   height = 540,
+  pixelated = false,
 }: ProjectImageProps) {
   const isPlaceholder = !src || src.startsWith("placeholder:")
 
@@ -24,7 +26,7 @@ export function ProjectImage({
     return (
       <figure className="my-8">
         <div
-          className="flex items-center justify-center rounded-xl border-2 border-dashed"
+          className="flex items-center justify-center rounded-xl"
           style={{
             backgroundColor: fallbackColor + "15",
             borderColor: fallbackColor + "40",
@@ -45,15 +47,17 @@ export function ProjectImage({
     )
   }
 
+  const pixelClass = pixelated ? " [image-rendering:pixelated]" : ""
+
   return (
-    <figure className="my-8">
-      <div className="overflow-hidden rounded-xl border border-[#E8E4DF]">
+    <figure className="my-8 in-[.image-grid]:my-0">
+      <div className="relative overflow-hidden rounded-xl in-[.image-grid]:aspect-square">
         <Image
           src={src}
           alt={alt}
           width={width}
           height={height}
-          className="h-auto w-full"
+          className={`h-auto w-full in-[.image-grid]:absolute in-[.image-grid]:inset-0 in-[.image-grid]:h-full in-[.image-grid]:object-cover${pixelClass}`}
           unoptimized
         />
       </div>
