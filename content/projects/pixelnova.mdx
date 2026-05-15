@@ -20,7 +20,7 @@ tools:
   - "Fly.io"
   - "HuggingFace"
 description: "An AI pixel art platform with a custom downscaling algorithm, 600+ users, and a hard lesson in market timing."
-order: 4
+order: 2
 featured: true
 category: "featured"
 ---
@@ -52,11 +52,11 @@ The technically interesting part of PixelNova was never the AI generation itself
 
 Standard image processing libraries use interpolation methods (bilinear, bicubic) when scaling images. These methods average surrounding pixel values, which produces smooth gradients instead of hard pixel edges. That is the correct behavior for photographs, but it destroys pixel art. I needed an algorithm that preserved hard color boundaries during downscaling, because that is what defines the pixel art aesthetic.
 
-<ProjectImage src="/projects/pixelnova/convert_to_true_pixelart.png" alt="PixelNova conversion tool showing the original AI-generated arctic fox on the left and the 64x64 true pixel art conversion on the right, with resolution settings and quick presets" caption="The conversion tool. Upload an image, set the target resolution, and the algorithm produces true pixel art." />
+<ProjectImage src="/projects/pixelnova/pixelnova_convert_image.png" alt="PixelNova conversion tool showing the original image on the left and the pixel art conversion on the right" caption="The conversion tool. Upload an image, set the target resolution, and the algorithm produces true pixel art." />
 
-I originally wrote the algorithm as a custom C++ module compiled to WebAssembly. It ran in the browser and performed pixel-perfect downscaling by analyzing the source image's color distribution within each target pixel's region rather than averaging across regions. The early versions used a grid-based system that mapped source pixels to target grid cells, but the approach was overly complex and produced artifacts at certain resolution ratios.
+I originally wrote the algorithm as a custom C++ module compiled to WebAssembly. It ran in the browser and performed pixel-perfect downscaling by using a grid-based system that mapped source pixels to target grid cells (using the <Highlight>median, not average</Highlight>). This stood the test of time and was the basis for the final algorithm.
 
-I replaced the C++ WASM module with a third-party Rust module that optimized the core approach and handled edge cases more cleanly. Eventually I ported the algorithm to TypeScript and moved it server-side, eliminating the WASM dependency entirely. The final version uses an edge-detection approach instead of the original grid system, which simplified the code and produced better results at non-integer scale factors. <Highlight>The algorithm went through three complete implementations: C++ to WebAssembly, Rust module, and finally TypeScript server-side.</Highlight>
+I replaced the C++ WASM module with a third-party Rust module that optimized the core approach and handled edge cases more cleanly. <Highlight>The algorithm went from a C++ to WebAssembly client-side to a Rust module server-side.</Highlight>
 
 ### The Difference
 
@@ -77,13 +77,13 @@ The generation feature let users create pixel art from text prompts. I ran infer
 
 The generation workflow borrowed from the same pattern every AI art tool uses: describe what you want, click generate, download the result. I built prompt suggestions into the interface and supported multiple download formats including individual PNGs and ZIP archives.
 
-<ProjectImage src="placeholder:PixelNova generation interface showing the prompt input field, generation settings, and output preview with download options" alt="PixelNova AI generation interface" caption="The generation interface. Prompt input, style options, and direct download." pixelated/>
+<ProjectImage src="/projects/pixelnova/pixelnova_ai_generate.png" alt="PixelNova AI generation interface" caption="The generation interface. Prompt input, style options, and direct download." />
 
 The platform also included a gallery that saved every generation to the user's account, and a browser-based pixel art editor with layer support for post-generation touch-ups. The editor was positioned as a way to refine AI output without leaving the platform, though in practice most users downloaded their images and edited them in dedicated tools like Aseprite.
 
-<ProjectImage src="placeholder:PixelNova gallery view showing a grid of previously generated pixel art images with download and edit options" alt="User gallery showing generated pixel art" caption="The personal gallery. Every generation saved and accessible from anywhere." pixelated />
+<ProjectImage src="/projects/pixelnova/pixelnova_gallery.png" alt="User gallery showing generated pixel art" caption="The personal gallery. Every generation saved and accessible from anywhere." />
 
-<ProjectImage src="placeholder:PixelNova pixel art editor showing the canvas, layer panel, color palette, and drawing tools" alt="PixelNova pixel art editor" caption="The built-in editor. Layers, color palette, and basic drawing tools."pixelated />
+<ProjectImage src="/projects/pixelnova/pixelnova_editor.png" alt="PixelNova pixel art editor" caption="The built-in editor. Layers, color palette, and basic drawing tools." />
 
 ---
 
@@ -125,7 +125,7 @@ The frontend is React and Next.js. The backend runs Node.js deployed on Fly.io. 
 
 Infrastructure costs were low. Hosting ran approximately $6-7/month, and HuggingFace inference cost roughly $10/month at the usage levels I was seeing. A single paying subscriber covered operating costs. The pricing model was $9.99/month for 220 AI generations plus unlimited conversions. The math was simple: 100-200 paying users would represent meaningful revenue.
 
-<ProjectImage src="placeholder:PixelNova pricing page showing the subscription tiers, generation credits, and unlimited conversion access" alt="PixelNova pricing page" caption="The pricing page. $9.99/month for 220 generations and unlimited conversions." />
+<ProjectImage src="/projects/pixelnova/pixelnova_pricing.png" alt="PixelNova pricing page" caption="The pricing page. $9.99/month for 220 generations and unlimited conversions." />
 
 ---
 

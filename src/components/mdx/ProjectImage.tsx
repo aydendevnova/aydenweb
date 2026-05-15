@@ -39,7 +39,7 @@ export function ProjectImage({
           </span>
         </div>
         {caption && (
-          <figcaption className="font-body mt-3 text-center text-sm text-[var(--color-muted)]">
+          <figcaption className="font-body mt-3 text-left text-sm text-[var(--color-muted)]">
             {caption}
           </figcaption>
         )}
@@ -57,12 +57,12 @@ export function ProjectImage({
           alt={alt}
           width={width}
           height={height}
-          className={`h-auto w-full in-[.image-grid-uniform]:absolute in-[.image-grid-uniform]:inset-0 in-[.image-grid-uniform]:h-full in-[.image-grid-uniform]:object-cover${pixelClass}`}
+          className={`h-auto max-h-[500px] w-full object-contain object-left in-[.image-grid-uniform]:absolute in-[.image-grid-uniform]:inset-0 in-[.image-grid-uniform]:h-full in-[.image-grid-uniform]:object-cover in-[.image-grid-uniform]:object-center${pixelClass}`}
           unoptimized
         />
       </div>
       {caption && (
-        <figcaption className="font-body mt-3 text-center text-sm text-[var(--color-muted)]">
+        <figcaption className="font-body mt-3 text-left text-sm text-[var(--color-muted)]">
           {caption}
         </figcaption>
       )}

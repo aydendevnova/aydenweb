@@ -37,7 +37,7 @@ export default function HomePage() {
     <main className="flex min-h-full flex-col bg-[var(--color-bg)]">
       {/* Hero */}
       <FadeIn>
-        <section className="mx-auto flex w-full max-w-7xl flex-col px-6 pt-[120px] pb-[60px] md:flex-row md:items-center md:justify-between md:gap-12 md:px-12 md:pt-[150px] md:pb-[100px] lg:px-20 lg:pt-[180px] lg:pb-[120px]">
+        <section className="mx-auto flex w-full max-w-7xl flex-col px-6 pt-[120px] pb-[60px] md:flex-row md:items-center md:justify-between md:gap-12 md:px-12 md:pt-[150px] md:pb-[100px] lg:px-20 lg:pt-[200px] lg:pb-[140px]">
           <div className="flex flex-col gap-5 md:gap-6">
             <Image
               src="/images/selfie.jpeg"
@@ -84,7 +84,7 @@ export default function HomePage() {
 
       {/* Selected Work — Thumbnail Grid */}
       <div className="bg-white">
-      <section id="work" className="mx-auto w-full max-w-7xl px-6 py-[50px] md:px-12 md:py-[80px] lg:px-20 lg:py-[100px]">
+      <section id="work" className="mx-auto w-full max-w-7xl px-6 py-[50px] md:px-12 md:py-[90px] lg:px-20 lg:py-[160px]">
         <FadeIn>
           <h2 className="font-heading mb-8 text-[28px] font-semibold text-[var(--color-text)] md:mb-12 md:text-[34px] lg:text-[40px] text-center md:text-left">
             Selected Work
@@ -104,7 +104,7 @@ export default function HomePage() {
               />
             ))}
           </div>
-          <div className="mt-8 text-center md:text-left">
+          <div className="mt-12 text-center md:text-left">
             <Link
               href="/work"
               className="font-body text-[15px] font-medium text-[var(--color-link)] hover:underline text-center md:text-left"
@@ -116,58 +116,21 @@ export default function HomePage() {
       </section>
       </div>
 
-      {/* Testimonials */}
-      <section id="testimonials" className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 py-[50px] md:gap-12 md:px-12 md:py-[60px] lg:px-20 lg:py-[80px]">
-        <FadeIn>
-          <h2 className="font-heading text-[28px] font-semibold text-[var(--color-text)] md:text-[34px] lg:text-[40px]">
-            Testimonials
-          </h2>
-        </FadeIn>
-
-        <FadeIn>
-          <Testimonial
-            quote={`"Ayden Springer is the kind of Full Stack Developer every team dreams of having. His dedication to the craft and consistent success in delivering exceptional digital products makes him a valuable asset. I highly recommend Ayden Springer for any tech project."`}
-            name="Rocky Nguyen"
-            image={rockyImg}
-            link="https://www.linkedin.com/in/rockynhatnguyen/"
-            role="Engineering Manager at Elysium Health"
-          />
-        </FadeIn>
-        <FadeIn>
-          <Testimonial
-            quote={`"If you need a Dev who talks with their keyboard instead of prolonging the Zoom call, Ayden will kick out your project faster than 90% of the over-confident 'code crafters' out there. Ayden gets it DONE."`}
-            name="Michael Jagdeo"
-            image={michaelImg}
-            link="https://www.linkedin.com/in/jagdeoholdings/"
-            role="Recruiter at Delmi Training"
-          />
-        </FadeIn>
-        <FadeIn>
-          <Testimonial
-            quote={`"Ayden is an amazingly talented developer. His contribution to the project Avalanche from The New Dev Order was crucial to completing the most difficult task that saw the team home. He is gonna be the best find for any Hiring Manager."`}
-            name="Manish Andankar"
-            image={manishImg}
-            link="https://www.linkedin.com/in/manishandankar/"
-            role="Founder & CEO at Worthum"
-          />
-        </FadeIn>
-      </section>
-
       {/* Background */}
-      <div className="bg-white">
+      <div>
       <FadeIn>
-        <section id="background" className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 py-[50px] md:gap-10 md:px-12 md:py-[60px] lg:px-20 lg:py-[80px]">
+        <section id="background" className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-6 py-[50px] md:gap-16 md:px-12 md:py-[60px] lg:px-20 lg:py-[80px]">
           <h2 className="font-heading text-[28px] font-semibold text-[var(--color-text)] md:text-[34px] lg:text-[40px]">
             Background
           </h2>
 
-          <div className="flex max-w-[800px] flex-col gap-20 mt-12">
+          <div className="flex max-w-[800px] flex-col gap-20">
             <div className="flex flex-col gap-4">
               <h3 className="font-heading text-[22px] font-semibold text-[var(--color-text)]">
                 Everplast
               </h3>
               <p className="font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
-                I started building software in high school, teaching myself GDScript and the Godot engine to build Everplast: <Highlight>a full-length action-adventure game that I shipped to Steam at 16 years old</Highlight>. Eight months of solo development: four worlds, five weapons, boss AI, a rank-based progression system, a full save system, and the entire Steam publishing pipeline. <Highlight>So what happens when you scope a project way too big and have to figure out how to ship it anyway.</Highlight>
+                I started building software in high school, teaching myself GDScript and the Godot engine to build Everplast: <Highlight>a full-length action-adventure game that I shipped to Steam at 16 years old</Highlight>. Eight months of solo development: four worlds, five weapons, boss AI, a rank-based progression system, a full save system, and the entire Steam publishing pipeline. <Highlight>So, what happens when you scope a project way too big and have to figure out how to ship it anyway?</Highlight>
               </p>
 
               <p className="font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
@@ -221,6 +184,48 @@ export default function HomePage() {
         </section>
       </FadeIn>
       </div>
+
+      {/* Testimonials */}
+      <div className="bg-white ">
+      <section id="testimonials" className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 py-[50px] md:gap-12 md:px-12 md:py-[60px] lg:px-20 lg:py-[90px]">
+        <FadeIn>
+          <h2 className="font-heading text-[28px] font-semibold text-[var(--color-text)] md:text-[34px] lg:text-[40px]">
+            Testimonials
+          </h2>
+        </FadeIn>
+
+        <FadeIn>
+          <Testimonial
+            quote={`"Ayden Springer is the kind of Full Stack Developer every team dreams of having. His dedication to the craft and consistent success in delivering exceptional digital products makes him a valuable asset. I highly recommend Ayden Springer for any tech project."`}
+            name="Rocky Nguyen"
+            image={rockyImg}
+            link="https://www.linkedin.com/in/rockynhatnguyen/"
+            role="Engineering Manager at Elysium Health"
+          />
+        </FadeIn>
+        <FadeIn>
+          <Testimonial
+            quote={`"If you need a Dev who talks with their keyboard instead of prolonging the Zoom call, Ayden will kick out your project faster than 90% of the over-confident 'code crafters' out there. Ayden gets it DONE."`}
+            name="Michael Jagdeo"
+            image={michaelImg}
+            link="https://www.linkedin.com/in/jagdeoholdings/"
+            role="Recruiter at Delmi Training"
+          />
+        </FadeIn>
+        <FadeIn>
+          <Testimonial
+            quote={`"Ayden is an amazingly talented developer. His contribution to the project Avalanche from The New Dev Order was crucial to completing the most difficult task that saw the team home. He is gonna be the best find for any Hiring Manager."`}
+            name="Manish Andankar"
+            image={manishImg}
+            link="https://www.linkedin.com/in/manishandankar/"
+            role="Founder & CEO at Worthum"
+          />
+        </FadeIn>
+      </section>
+      </div>
+
+
+
     </main>
   )
 }

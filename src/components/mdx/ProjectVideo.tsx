@@ -82,7 +82,7 @@ export function ProjectVideo({
           </div>
         </div>
         {caption && (
-          <figcaption className="font-body mt-3 text-center text-sm text-[var(--color-muted)]">
+          <figcaption className="font-body mt-3 text-left text-sm text-[var(--color-muted)]">
             {caption}
           </figcaption>
         )}
@@ -116,7 +116,7 @@ export function ProjectVideo({
         )}
       </div>
       {caption && (
-        <figcaption className="font-body mt-3 text-center text-sm text-[var(--color-muted)]">
+        <figcaption className="font-body mt-3 text-left text-sm text-[var(--color-muted)]">
           {caption}
         </figcaption>
       )}

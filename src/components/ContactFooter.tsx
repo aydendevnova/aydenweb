@@ -1,4 +1,4 @@
-import { ArrowUpRightFromSquareIcon } from "lucide-react"
+import { ArrowUpRightFromSquareIcon, FileIcon, GithubIcon, LinkedinIcon, MailIcon } from "lucide-react"
 import Link from "next/link"
 
 export function ContactFooter() {
@@ -10,8 +10,9 @@ export function ContactFooter() {
       <div className="font-body flex flex-col gap-4">
         <a
           href="mailto:23aspringer3@gmail.com"
-          className="text-[16px] text-[var(--color-link)] hover:underline"
+          className="text-[16px] text-[var(--color-link)] hover:underline flex items-center gap-2"
         >
+          <MailIcon size={16} />
           23aspringer3@gmail.com
         </a>
         <Link
@@ -20,6 +21,7 @@ export function ContactFooter() {
           rel="noopener noreferrer"
           className="text-[16px] text-[var(--color-link)] hover:underline flex items-center gap-2"
         >
+          <GithubIcon size={16} />
           github.com/aydendevnova <ArrowUpRightFromSquareIcon size={14} />
         </Link>
         <Link
@@ -28,6 +30,7 @@ export function ContactFooter() {
           rel="noopener noreferrer"
           className="text-[16px] text-[var(--color-link)] hover:underline flex items-center gap-2"
         >
+          <LinkedinIcon size={16} />
           linkedin.com/in/ayden-springer <ArrowUpRightFromSquareIcon size={14} />
         </Link>
         <Link
@@ -36,6 +39,7 @@ export function ContactFooter() {
           rel="noopener noreferrer"
           className="mt-4 flex items-center gap-2 text-[16px] font-medium text-[var(--color-link)] hover:underline"
         >
+          <FileIcon size={16} />
           View Resume <ArrowUpRightFromSquareIcon size={14} />
         </Link>
       </div>
