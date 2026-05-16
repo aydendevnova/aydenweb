@@ -119,46 +119,14 @@ export default function HomePage() {
       {/* Background */}
       <div>
       <FadeIn>
-        <section id="background" className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-6 py-[50px] md:gap-16 md:px-12 md:py-[60px] lg:px-20 lg:py-[80px]">
+        <section id="background" className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-6 py-[50px] md:gap-16 md:px-12 md:py-[80px] lg:px-20 lg:py-[100px]">
           <h2 className="font-heading text-[28px] font-semibold text-[var(--color-text)] md:text-[34px] lg:text-[40px]">
             Background
           </h2>
 
           <div className="flex max-w-[800px] flex-col gap-20">
-            <div className="flex flex-col gap-4">
-              <h3 className="font-heading text-[22px] font-semibold text-[var(--color-text)]">
-                Everplast
-              </h3>
-              <p className="font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
-                I started building software in high school, teaching myself GDScript and the Godot engine to build Everplast: <Highlight>a full-length action-adventure game that I shipped to Steam at 16 years old</Highlight>. Eight months of solo development: four worlds, five weapons, boss AI, a rank-based progression system, a full save system, and the entire Steam publishing pipeline. <Highlight>So, what happens when you scope a project way too big and have to figure out how to ship it anyway?</Highlight>
-              </p>
 
-              <p className="font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
-                <Link className="text-[var(--color-link)] hover:underline inline-flex items-center gap-1" href="/work/everplast">
-                  View case study &rarr;
-                </Link>
-              </p>
-
-              <div className="mt-2 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <Image
-                  src="/projects/everplast/world1.png"
-                  alt="Everplast gameplay — Foggy Overlands world"
-                  width={640}
-                  height={360}
-                  className="rounded-xl object-cover"
-                />
-                <Image
-                  src="/projects/everplast/shooting_enemy_still.png"
-                  alt="Everplast combat — player firing at an enemy"
-                  width={640}
-                  height={360}
-                  className="rounded-xl object-cover"
-                />
-              </div>
-
-            </div>
-
-            <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4">
               <h3 className="font-heading text-[22px] font-semibold text-[var(--color-text)]">
                 Elysium Health
               </h3>
@@ -174,11 +142,77 @@ export default function HomePage() {
 
             <div className="flex flex-col gap-4">
               <h3 className="font-heading text-[22px] font-semibold text-[var(--color-text)]">
+                Everplast
+              </h3>
+              <p className="font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
+                I started building software in high school, teaching myself GDScript and the Godot engine to build Everplast: <Highlight>a full-length action-adventure game that I shipped to Steam at 16 years old</Highlight>. Eight months of solo development: four worlds, five weapons, boss AI, a rank-based progression system, a full save system, and the entire Steam publishing pipeline. <Highlight>So, what happens when you scope a project way too big and have to figure out how to ship it anyway?</Highlight>
+              </p>
+
+              <p className="font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
+                <Link className="text-[var(--color-link)] hover:underline inline-flex items-center gap-1" href="/work/everplast">
+                  View case study &rarr;
+                </Link>
+              </p>
+
+              <Link href="/work/everplast" className="mt-2 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <Image
+                  src="/projects/everplast/world1.png"
+                  alt="Everplast gameplay — Foggy Overlands world"
+                  width={640}
+                  height={360}
+                  className="rounded-xl object-cover"
+                />
+                <Image
+                  src="/projects/everplast/shooting_enemy_still.png"
+                  alt="Everplast combat — player firing at an enemy"
+                  width={640}
+                  height={360}
+                  className="rounded-xl object-cover"
+                />
+              </Link>
+
+            </div>
+
+
+            <div className="flex flex-col gap-4">
+
+
+            
+            </div>
+
+            <div className="flex flex-col gap-4">
+              <h3 className="font-heading text-[22px] font-semibold text-[var(--color-text)]">
                 Currently
               </h3>
               <p className="font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
-                I am a third-year computer science student at the University of North Florida, graduating Spring 2027. Available for full-time roles starting Summer 2027 or contract work now.
+                I am still continuing to work on future project updates with Zero Authority. There are also communications with new clients, so more projects will be coming soon. Meanwhile, I continue studying in my last year of University.
               </p>
+              <p className="font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
+                Finally, I am working on a ground-up recreation of the original Super Mario Bros. in Godot, built under one constraint. <Highlight>No Nintendo sprites can be distributed</Highlight>.
+                </p>
+              <p className="font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
+                <Link className="text-[var(--color-link)] hover:underline inline-flex items-center gap-1" href="/work/super-mario-godot">
+                  View case study &rarr;
+                </Link>
+              </p>
+
+              <Link href="/work/super-mario-godot" className="mt-2 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <Image
+                  src="/projects/super-mario-godot/world_1-1.png"
+                  alt="Super Mario Bros. remake — World 1-1 gameplay in Godot"
+                  width={640}
+                  height={360}
+                  className="rounded-xl object-cover [image-rendering:pixelated]"
+                />
+                <Image
+                  src="/projects/super-mario-godot/screenshot-title-screen-options.png"
+                  alt="Super Mario Bros. remake — options menu"
+                  width={720}
+                  height={460}
+      
+                  className="rounded-xl object-cover w-full h-full [image-rendering:pixelated]"
+                />
+              </Link>
             </div>
           </div>
         </section>

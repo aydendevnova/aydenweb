@@ -26,7 +26,7 @@ export function ProjectImage({
     return (
       <figure className="my-8">
         <div
-          className="flex items-center justify-center rounded-xl"
+          className="flex items-center justify-center"
           style={{
             backgroundColor: fallbackColor + "15",
             borderColor: fallbackColor + "40",
@@ -51,13 +51,13 @@ export function ProjectImage({
 
   return (
     <figure className="my-8 in-[.image-grid]:my-0">
-      <div className="relative overflow-hidden rounded-xl in-[.image-grid-uniform]:aspect-square">
+      <div className="relative overflow-hidden  in-[.image-grid-uniform]:aspect-square">
         <Image
           src={src}
           alt={alt}
           width={width}
           height={height}
-          className={`h-auto max-h-[500px] w-full object-contain object-left in-[.image-grid-uniform]:absolute in-[.image-grid-uniform]:inset-0 in-[.image-grid-uniform]:h-full in-[.image-grid-uniform]:object-cover in-[.image-grid-uniform]:object-center${pixelClass}`}
+          className={`block h-auto max-h-[700px] w-full object-contain object-left in-[.image-grid-uniform]:absolute in-[.image-grid-uniform]:inset-0 in-[.image-grid-uniform]:h-full in-[.image-grid-uniform]:object-cover in-[.image-grid-uniform]:object-center${pixelClass}`}
           unoptimized
         />
       </div>
