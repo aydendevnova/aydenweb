@@ -25,6 +25,7 @@ export interface ProjectFrontmatter {
   order: number
   featured: boolean
   category: ProjectCategory
+  noindex?: boolean
 }
 
 export interface Project {

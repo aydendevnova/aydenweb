@@ -6,6 +6,7 @@ import { ContactFooter } from "@/components/ContactFooter";
 import { SiteNav } from "@/components/SiteNav";
 import { AudioProvider } from "@/components/AudioContext";
 import { Analytics } from "@vercel/analytics/next";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aydenweb.com"),
@@ -62,6 +63,7 @@ export default function RootLayout({
     <html lang="en" className={`${crimsonText.variable} ${inter.variable} h-full`}>
       <body className="h-full bg-[var(--color-bg)]">
         <AudioProvider>
+          <SmoothScroll />
           <SiteNav />
           {children}
           <ContactFooter />

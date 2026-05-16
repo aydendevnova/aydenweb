@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { motion } from "framer-motion"
 
 interface ProjectHeroProps {
   title: string
@@ -28,7 +29,10 @@ export function ProjectHero({
   const isSplit = hasImage && hasSecondary && splitHero
 
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className="relative flex min-h-[50vh] w-full flex-col items-center justify-end gap-6 overflow-hidden px-6 pt-[100px] pb-16 md:min-h-[60vh] md:px-12 lg:px-20"
       style={{ backgroundColor: color }}
     >
@@ -92,14 +96,19 @@ export function ProjectHero({
         </div>
       )}
 
-      <div className="relative z-10 mt-4 text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+        className="relative z-10 mt-4 text-center"
+      >
         <h1 className="font-heading text-[32px] font-semibold leading-tight text-white md:text-[44px] lg:text-[56px]">
           {title}
         </h1>
         <p className="font-body mx-auto mt-3 max-w-xl text-base text-white/80 md:text-lg">
           {subtitle}
         </p>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   )
 }

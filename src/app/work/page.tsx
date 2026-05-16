@@ -20,7 +20,7 @@ export default function WorkPage() {
 
   return (
     <main className="flex min-h-full flex-col bg-[var(--color-bg)]">
-      <section className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-6 pt-[120px] pb-[60px] md:px-12 md:pt-[150px] md:pb-[80px] lg:px-20">
+      <section className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-6 pt-[44px] pb-[60px] md:px-12 md:pt-[48px] md:pb-[80px] lg:px-20">
         <div>
           <FadeIn mobileEnabled>
             <Link
@@ -44,7 +44,7 @@ export default function WorkPage() {
               <h2 className="font-heading text-[22px] font-semibold text-[var(--color-text)] md:text-[26px]">
                 Featured
               </h2>
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="flex flex-col gap-20 sm:gap-6 lg:grid lg:grid-cols-3">
                 {featured.map((project) => (
                   <ProjectThumbnail
                     key={project.frontmatter.slug}
@@ -53,6 +53,7 @@ export default function WorkPage() {
                     color={project.frontmatter.color}
                     thumbnail={project.frontmatter.thumbnail}
                     thumbnailFit={project.frontmatter.thumbnailFit}
+                    description={project.frontmatter.description}
                   />
                 ))}
               </div>
@@ -65,7 +66,7 @@ export default function WorkPage() {
             <h2 className="font-heading text-[22px] font-semibold text-[var(--color-text)] md:text-[26px]">
               All Projects
             </h2>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="flex flex-col gap-20 sm:gap-6 lg:grid lg:grid-cols-3">
               {all.map((project) => (
                 <ProjectThumbnail
                   key={project.frontmatter.slug}
@@ -74,6 +75,7 @@ export default function WorkPage() {
                   color={project.frontmatter.color}
                   thumbnail={project.frontmatter.thumbnail}
                   thumbnailFit={project.frontmatter.thumbnailFit}
+                  description={project.frontmatter.description}
                 />
               ))}
             </div>

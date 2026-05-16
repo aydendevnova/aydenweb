@@ -37,7 +37,7 @@ export default function HomePage() {
     <main className="flex min-h-full flex-col bg-[var(--color-bg)]">
       {/* Hero */}
       <FadeIn>
-        <section className="mx-auto flex w-full max-w-7xl flex-col px-6 pt-[120px] pb-[60px] md:flex-row md:items-center md:justify-between md:gap-12 md:px-12 md:pt-[150px] md:pb-[100px] lg:px-20 lg:pt-[200px] lg:pb-[140px]">
+        <section className="mx-auto flex w-full max-w-7xl flex-col px-6 pt-[44px] pb-[60px] md:flex-row md:items-center md:justify-between md:gap-12 md:px-12 md:pt-[72px] md:pb-[100px] lg:px-20 lg:pt-[96px] lg:pb-[140px]">
           <div className="flex flex-col gap-5 md:gap-6">
             <Image
               src="/images/selfie.jpeg"
@@ -133,11 +133,32 @@ export default function HomePage() {
               <p className="font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
                 Engineering internship building a React Native mobile app prototype and AI product assistant. Implemented health safeguards to avoid medical claims, integrated knowledge retrieval, and built tool-calling functionality for supplement recommendations.
               </p>
-              <p className="font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
+              <p className="flex flex-row gap-8 font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
+                <Link className="text-[var(--color-link)] hover:underline inline-flex items-center gap-1" href="/work/elysium-health">
+                  View case study &rarr;
+                </Link>
                 <Link className="text-[var(--color-link)] hover:underline inline-flex items-center gap-1" href="https://www.elysiumhealth.com/" target="_blank" rel="noopener noreferrer">
                   elysiumhealth.com <ArrowUpRightFromSquareIcon size={12} />
                 </Link>
               </p>
+
+
+              <Link href="/work/elysium-health" className="mt-2 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <Image
+                  src="/projects/elysium-health/consumer-facing-elyse-ai.png"
+                  alt="Everplast gameplay — Foggy Overlands world"
+                  width={640}
+                  height={360}
+                  className="rounded-xl object-cover bg-white p-2"
+                />
+                <Image
+                  src="/projects/elysium-health/elysium.webp"
+                  alt="Everplast combat — player firing at an enemy"
+                  width={640}
+                  height={360}
+                  className="rounded-xl object-cover bg-black p-2"
+                />
+              </Link>
             </div>
 
             <div className="flex flex-col gap-4">
@@ -175,20 +196,14 @@ export default function HomePage() {
 
 
             <div className="flex flex-col gap-4">
-
-
-            
-            </div>
-
-            <div className="flex flex-col gap-4">
               <h3 className="font-heading text-[22px] font-semibold text-[var(--color-text)]">
                 Currently
               </h3>
               <p className="font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
-                I am still continuing to work on future project updates with Zero Authority. There are also communications with new clients, so more projects will be coming soon. Meanwhile, I continue studying in my last year of University.
+                I am still continuing to work on future project updates with <Highlight>Zero Authority</Highlight>. There are also communications with new clients, so more projects will be coming soon. Meanwhile, I continue studying in my <Highlight>last year of University</Highlight>.
               </p>
               <p className="font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
-                Finally, I am working on a ground-up recreation of the original Super Mario Bros. in Godot, built under one constraint. <Highlight>No Nintendo sprites can be distributed</Highlight>.
+                Finally, I am working on a ground-up recreation of the original Super Mario Bros. in Godot, built under one constraint. <Highlight>How is it possible that no Nintendo sprites are distributed?</Highlight>
                 </p>
               <p className="font-body text-[16px] leading-[1.7] text-[var(--color-text)]">
                 <Link className="text-[var(--color-link)] hover:underline inline-flex items-center gap-1" href="/work/super-mario-godot">

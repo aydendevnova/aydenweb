@@ -8,6 +8,7 @@ import { MetadataSidebar } from "@/components/mdx/MetadataSidebar"
 import { ProjectHero } from "@/components/mdx/ProjectHero"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
+import { FadeIn } from "@/components/FadeIn"
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -22,11 +23,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const project = getProjectBySlug(slug)
   if (!project) return {}
 
-  const { title, subtitle } = project.frontmatter
+  const { title, subtitle, noindex } = project.frontmatter
   return {
     title,
     description: subtitle,
     alternates: { canonical: `https://aydenweb.com/work/${slug}` },
+    ...(noindex && {
+      robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
+    }),
     openGraph: {
       title: `${title} — Ayden Springer`,
       description: subtitle,
@@ -74,15 +78,17 @@ export default async function ProjectPage({ params }: PageProps) {
             />
           </div>
 
-          <div className="prose-custom max-w-6xl mx-auto">
-          <Link
-            href="/#work"
-            className="font-body mb-6 flex w-fit items-center gap-2 text-sm font-medium text-[var(--color-link)] hover:underline"
-          >
-            <ArrowLeft size={14} /> All Projects
-          </Link>
-            <MDXRemote source={content} components={mdxComponents} />
-          </div>
+          <FadeIn mobileEnabled>
+            <div className="prose-custom max-w-6xl mx-auto">
+              <Link
+                href="/work"
+                className="font-body mb-6 flex w-fit items-center gap-2 text-sm font-medium text-[var(--color-link)] hover:underline"
+              >
+                <ArrowLeft size={14} /> All Projects
+              </Link>
+              <MDXRemote source={content} components={mdxComponents} />
+            </div>
+          </FadeIn>
         </article>
 
         <aside className="sticky top-[100px] hidden h-fit w-[200px] shrink-0 border-l border-[var(--color-border)] pl-8 lg:block">

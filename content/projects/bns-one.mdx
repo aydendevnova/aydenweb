@@ -1,10 +1,9 @@
 ---
-title: "BNS One"
+title: "BNS One: Blockchain Naming System"
 subtitle: "What does it take to make a blockchain naming system feel like buying a .com?"
 slug: "bns-one"
-color: "#2563EB"
-thumbnail: "placeholder:BNS One app — domain search interface with results"
-thumbnailSecondary: "placeholder:BNS One — marketplace listing view"
+color: "#40062d"
+thumbnail: "/projects/bns-one/thumb.png"
 role: "Sole Developer"
 timeline: "2024"
 team:
@@ -21,7 +20,7 @@ tools:
   - "Supabase"
   - "Cloudflare"
 description: "A unified frontend for Bitcoin Name System domain search, registration, management, and marketplace trading on the Stacks blockchain."
-order: 4
+order: 5
 featured: false
 category: "web-development"
 ---
@@ -32,7 +31,7 @@ BNS One is the frontend for Bitcoin Name System domain management on the Stacks 
 
 I built the entire frontend as sole developer through Red Block Labs. The project was funded by the Stacks Foundation, with the client (who goes by Snazzy) handling the grant relationship and product direction. Rocky Nguyen led the engagement on our side, and Christina Vu provided the design work in Figma. The development milestone covered both BNS One and a companion informational site at bns.foundation.
 
-<ProjectImage src="placeholder:BNS One homepage — search bar prominently centered with featured .btc domains below" alt="BNS One homepage" caption="The BNS One homepage. One search bar, instant availability checks." />
+<ProjectImage src="/projects/bns-one/bns-landing.png" alt="BNS One homepage" caption="The BNS One homepage. One search bar, instant availability checks." />
 
 ---
 
@@ -42,7 +41,7 @@ The Stacks Foundation funded BNS One through a milestone-based grant. The design
 
 The existing BNS tools were fragmented. Searching for domain availability, registering names, managing renewals, and trading on the secondary market all happened in different places. Most of these tools assumed users already understood Stacks wallet mechanics and transaction flows. Snazzy wanted something that unified these actions into one experience and felt approachable to people who had never interacted with on-chain naming systems before.
 
-<ProjectImage src="placeholder:Figma overview showing BNS One app screens — search, dashboard, marketplace, and registration flows" alt="BNS One Figma designs" caption="The Figma overview. Every screen designed before development started." />
+<ProjectImage src="/projects/bns-one/bns-profile.png" alt="BNS One account view from the production build" caption="One of the finalized production views implemented from the approved Figma set." />
 
 ---
 
@@ -54,7 +53,7 @@ Before writing any application code, I had to wire up the hosting and services l
 
 I noticed that Snazzy initially shared credentials over email, which I let them know is a security risk. We moved exchanged sensitive information through more secure platforms. It was one of those moments that made us think about how we want to handle operational security throughout our team's projects.
 
-<ProjectImage src="placeholder:Cloudflare dashboard showing BNS One domain configuration and DNS settings" alt="Cloudflare configuration" caption="Cloudflare configuration. Hosting, DDoS protection, and DNS management for both domains." />
+I did not preserve a Cloudflare dashboard screenshot from the 2024 setup calls, but this was the stage where I configured hosting, DNS records, and deployment routing for both domains.
 
 ---
 
@@ -64,12 +63,10 @@ The search experience is the core interaction on BNS One. Typing a name shows av
 
 The registration flow handles the multi-step Stacks transaction (preorder followed by register) behind a single visible action. BNS name registration on Stacks requires two separate on-chain transactions with a waiting period between them. I built clear progress indicators for each confirmation stage so users understood that the process was working, even when it took time to settle on-chain.
 
-<ProjectImage src="placeholder:BNS One — search results page showing domain availability, pricing in STX, and expiration dates" alt="BNS search results" caption="Search results. Availability, pricing, and status at a glance." />
+<ProjectImage src="/projects/bns-one/bns-search-names.png" alt="BNS search results" caption="Search results. Availability, pricing, and status at a glance." />
 
-<ImageGrid columns={2}>
-  <ProjectImage src="placeholder:BNS One — registration flow showing preorder step with transaction details" alt="Registration step 1" caption="Preorder step." />
-  <ProjectImage src="placeholder:BNS One — registration confirmation with on-chain progress indicator" alt="Registration step 2" caption="Registration confirmation." />
-</ImageGrid>
+
+<ProjectImage src="/projects/bns-one/bns-profile.png" alt="Registration step 2" caption="Post-registration account state." />
 
 ---
 
@@ -83,10 +80,7 @@ We went back and forth on the solution. Snazzy wanted a "Register" button next t
 
 This was the kind of problem that required me to understand the blockchain constraint before I could design the right interaction pattern. I could not just build what the Figma showed because the Figma assumed functionality that did not exist at the protocol level.
 
-<ImageGrid columns={2}>
-  <ProjectImage src="placeholder:BNS One — cart view showing multiple domains with individual Register buttons and STX pricing" alt="Domain cart with individual registration" caption="Individual registration buttons per domain." />
-  <ProjectImage src="placeholder:BNS One — cart view with one domain showing 'Successfully Registered' state" alt="Domain registered success state" caption="Success state after registration." />
-</ImageGrid>
+<ProjectImage src="/projects/bns-one/bns-name-registration.png" alt="Domain registration flow" caption="The registration UI reflects per-name actions, matching the protocol-level limitation." />
 
 ---
 
@@ -94,7 +88,7 @@ This was the kind of problem that required me to understand the blockchain const
 
 Registered domain owners get a management dashboard showing all their BNS names, expiration dates, linked addresses, and renewal actions. The interface surfaces what matters: is this name about to expire, is it pointed to the right address, does it need renewal. Supabase stores user preferences and notification settings, and Resend handles the expiration warning emails so users do not lose names they forgot about.
 
-<ProjectImage src="placeholder:BNS One — domain management dashboard showing owned names, expiration dates, and renewal actions" alt="Domain dashboard" caption="The domain dashboard. Expiration tracking, address management, and one-click renewals." />
+<ProjectImage src="/projects/bns-one/my-bns-names.png" alt="Domain dashboard" caption="The domain dashboard. Expiration tracking, address management, and one-click renewals." />
 
 ---
 
@@ -103,13 +97,6 @@ Registered domain owners get a management dashboard showing all their BNS names,
 The marketplace mirrors functionality from Gamma (the primary NFT marketplace on Stacks) using their API, rendered with the BNS One interface. Users can list their BNS names for sale, browse available names, and complete purchases through on-chain escrow. The listing process walks sellers through pricing and duration, while buyers see a clean catalog with filtering by price, name length, and category.
 
 <Highlight>Integrating the Gamma marketplace API meant BNS One could offer trading functionality without building escrow infrastructure from scratch.</Highlight> The marketplace data stays in sync with Gamma's listings, so anything listed on BNS One is also visible in the broader Stacks NFT ecosystem.
-
-<ProjectImage src="placeholder:BNS One — marketplace view showing listed .btc domains with prices, name lengths, and filter controls" alt="BNS marketplace" caption="The marketplace. Browse, filter, and purchase .btc domains." />
-
-<ImageGrid columns={2}>
-  <ProjectImage src="placeholder:BNS One — domain listing creation form with price input and duration settings" alt="Creating a marketplace listing" caption="Listing a domain for sale." />
-  <ProjectImage src="placeholder:BNS One — domain purchase confirmation modal with escrow details" alt="Purchase confirmation" caption="Purchase flow with escrow." />
-</ImageGrid>
 
 ---
 
@@ -123,7 +110,9 @@ The deadline was tight. Snazzy wanted everything complete by November 15 so that
 
 <Highlight>I finished both projects on time.</Highlight> On November 18, Snazzy <Highlight>confirmed completion</Highlight> via GitHub and submitted the milestone to the Stacks Foundation <Highlight>for payment release</Highlight>.
 
-<ProjectImage src="placeholder:Ruttl QA interface showing comment threads on BNS One pages with resolved and open tickets" alt="Ruttl QA comments" caption="The Ruttl QA process. Detailed visual feedback on every page." />
+I also no longer have the exact historical screenshot of Snazzy's original comment thread, but this example reflects the same Ruttl-style async review workflow we used throughout QA.
+
+<ProjectImage src="/projects/bns-one/ruttl-example.jpeg" alt="Ruttl QA comments example" caption="A representative Ruttl review screenshot from the same QA process style." />
 
 ---
 
@@ -131,7 +120,7 @@ The deadline was tight. Snazzy wanted everything complete by November 15 so that
 
 Alongside BNS One, I built the BNS community website at bns.foundation. This was a separate informational site explaining the Bitcoin Name System, the community around it, and how to get involved. The scope was smaller than BNS One but shared the same design system and deployment infrastructure. Both sites lived under the same Cloudflare account and shipped together as part of the development milestone.
 
-<ProjectImage src="placeholder:BNS Foundation website — landing page explaining Bitcoin Name System with community links and resources" alt="BNS Foundation website" caption="The BNS community website. Education and onboarding for the BNS ecosystem." />
+<ProjectImage src="/projects/bns-one/bns-foundation.png" alt="BNS ecosystem web interface" caption="A shipped BNS ecosystem web surface from the same delivery window." />
 
 ---
 

@@ -8,8 +8,17 @@
   --color-muted: #6B6358;
 }
 
-.html {
+html.lenis, html.lenis body {
+  height: auto;
   scroll-behavior: smooth;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
 }
 
 @layer base {

@@ -2,6 +2,7 @@ import type { MDXComponents } from "mdx/types"
 import { ProjectImage } from "./ProjectImage"
 import { ProjectVideo } from "./ProjectVideo"
 import { ImageGrid } from "./ImageGrid"
+import { PhoneMockupPair } from "./PhoneMockupPair"
 import { Highlight } from "./Highlight"
 import { CalloutQuote } from "./CalloutQuote"
 
@@ -17,6 +18,7 @@ export const mdxComponents: MDXComponents = {
   ProjectImage,
   ProjectVideo,
   ImageGrid,
+  PhoneMockupPair,
   Highlight,
   CalloutQuote,
   h2: ({ children, ...props }: React.ComponentPropsWithoutRef<"h2">) => {
