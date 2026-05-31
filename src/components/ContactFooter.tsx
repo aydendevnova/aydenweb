@@ -16,13 +16,13 @@ export function ContactFooter() {
           23aspringer3@gmail.com
         </a>
         <Link
-          href="https://github.com/aydendevnova"
+          href="https://github.com/aydenspringer"
           target="_blank"
           rel="noopener noreferrer"
           className="text-[16px] text-[var(--color-link)] hover:underline flex items-center gap-2"
         >
           <GithubIcon size={16} />
-          github.com/aydendevnova <ArrowUpRightFromSquareIcon size={14} />
+          github.com/aydenspringer <ArrowUpRightFromSquareIcon size={14} />
         </Link>
         <Link
           href="https://linkedin.com/in/ayden-springer"
