@@ -1,9 +1,6 @@
 import type { Metadata } from "next"
-import { getFeaturedProjects, getAllProjects } from "@/lib/mdx"
-import { ProjectThumbnail } from "@/components/ProjectThumbnail"
-import { FadeIn } from "@/components/FadeIn"
-import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
+import { getAllProjects } from "@/lib/mdx"
+import { HorizontalProjects } from "@/components/HorizontalProjects"
 
 export const metadata: Metadata = {
   title: "All Projects",
@@ -15,73 +12,25 @@ export const metadata: Metadata = {
 }
 
 export default function WorkPage() {
-  const featured = getFeaturedProjects()
-  const all = getAllProjects().filter((p) => !p.frontmatter.featured)
+  const all = getAllProjects()
 
   return (
-    <main className="flex min-h-full flex-col bg-[var(--color-bg)]">
-      <section className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-6 pt-[44px] pb-[60px] md:px-12 md:pt-[48px] md:pb-[80px] lg:px-20">
-        <div>
-          <FadeIn mobileEnabled>
-            <Link
-              href="/"
-              className="font-body flex w-fit items-center gap-2 text-sm font-medium text-[var(--color-link)] hover:underline"
-            >
-              <ArrowLeft size={14} /> Home
-            </Link>
-          </FadeIn>
-
-          <FadeIn mobileEnabled>
-            <h1 className="font-heading mt-8 text-[32px] font-semibold leading-tight text-[var(--color-text)] md:text-[40px] lg:text-[48px]">
-              All Projects
-            </h1>
-          </FadeIn>
-        </div>
-
-        {featured.length > 0 && (
-          <FadeIn mobileEnabled>
-            <div className="flex flex-col gap-6">
-              <h2 className="font-heading text-[22px] font-semibold text-[var(--color-text)] md:text-[26px]">
-                Featured
-              </h2>
-              <div className="flex flex-col gap-20 sm:gap-6 lg:grid lg:grid-cols-3">
-                {featured.map((project) => (
-                  <ProjectThumbnail
-                    key={project.frontmatter.slug}
-                    title={project.frontmatter.title}
-                    slug={project.frontmatter.slug}
-                    color={project.frontmatter.color}
-                    thumbnail={project.frontmatter.thumbnail}
-                    thumbnailFit={project.frontmatter.thumbnailFit}
-                    description={project.frontmatter.description}
-                  />
-                ))}
-              </div>
-            </div>
-          </FadeIn>
-        )}
-
-        <FadeIn mobileEnabled>
-          <div className="flex flex-col gap-6">
-            <h2 className="font-heading text-[22px] font-semibold text-[var(--color-text)] md:text-[26px]">
-              All Projects
-            </h2>
-            <div className="flex flex-col gap-20 sm:gap-6 lg:grid lg:grid-cols-3">
-              {all.map((project) => (
-                <ProjectThumbnail
-                  key={project.frontmatter.slug}
-                  title={project.frontmatter.title}
-                  slug={project.frontmatter.slug}
-                  color={project.frontmatter.color}
-                  thumbnail={project.frontmatter.thumbnail}
-                  thumbnailFit={project.frontmatter.thumbnailFit}
-                  description={project.frontmatter.description}
-                />
-              ))}
-            </div>
-          </div>
-        </FadeIn>
-      </section>
+    <main className="min-h-full bg-(--color-bg)">
+      <HorizontalProjects
+        title="All Projects"
+        subtitle=""
+        showCta={false}
+        projects={all.map((p) => ({
+          title: p.frontmatter.title,
+          slug: p.frontmatter.slug,
+          color: p.frontmatter.color,
+          thumbnail: p.frontmatter.thumbnail,
+          thumbnailFit: p.frontmatter.thumbnailFit,
+          description: p.frontmatter.description,
+          category: p.frontmatter.category,
+          order: p.frontmatter.order,
+        }))}
+      />
     </main>
   )
 }
